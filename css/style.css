@@ -8,3 +8,16 @@
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
 }
+
+.textmain {
+    padding-top: 38.4px;
+    text-align: center;
+    color: #444;
+    font-family: 'Courier New';
+}
+
+.textmain:hover {
+    text-align: center;
+    color: white;
+    font-family: 'Courier New';
+}
