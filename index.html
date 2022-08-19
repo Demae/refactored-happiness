@@ -5,9 +5,13 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" type="text/javascript"></script>
 </head>
-<body style="background: linear-gradient(120deg, #12100E 0%, #090947 100%);">
+<body style="overflow: hidden; background: linear-gradient(120deg, #12100E 0%, #090947 100%);">
+    <video style="display: none;" playsinline muted loop id="video" width="1920" height="1080">
+      <source src="msc.mp4" type="video/mp4" />
+    </video>
+
     <div id="main" class="maincont">
-      <div id="mainderive" onclick="expandDong();">
+      <div id="mainderive" onclick="playVideo();">
         <h2 class="textmain">Enter the simulation?</h2>
       </div>
     </div>
