@@ -119,8 +119,8 @@ function removeText() {
 
 function revealText() {
   findElement("main").innerHTML = `
-    <h1 style="font-family:verdana" class="textmainsecondary">femboys.tv</h1>
-    <p style="font-family:'Courier New'; margin-bottom:0;">made to fuck with your head</p>
+    <h1 style="font-family:verdana" class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
+    <p style="font-family:'Courier New'; margin-bottom:0;">made to f**k with your head</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555">a scrumptious web project from your neighbourhood haxor</p>
     <p style="font-family:verdana; margin:0; padding-top:8px; display:inline-block;" class="textmain" onclick="customError();">[[random error]]</p>
     <p style="font-family:verdana; margin:0; padding-top:8px; display:inline-block;" class="textmain"">[[about me]]</p>
@@ -129,8 +129,8 @@ function revealText() {
 
 function playVideo()
 {
-  document.getElementById("video").style.display = "";
-  document.getElementById("video").play();
+  findElement("video").style.display = "";
+  findElement("video").play();
 
   removeText();
 
