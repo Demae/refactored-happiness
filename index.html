@@ -17,9 +17,9 @@
     </div>
 
     <script type="text/javascript">
-      document.getElementById("video").onloadeddata = function() {
+      document.getElementById("video").addEventListener('loadedmetadata', function() {
         findElement("introtext").innerText = "Enter the simulation?";
-      };
+      }, false);
     </script>
 </body>
 </html>
