@@ -12,13 +12,13 @@
 
     <div id="main" class="maincont">
       <div id="mainderive" onclick="playVideo();">
-        <h2 class="textmain" id="introtext" style="display: none;">Enter the simulation?</h2>
+        <h2 class="textmain" id="introtext">Loading...</h2>
       </div>
     </div>
 
     <script type="text/javascript">
       document.getElementById("video").addEventListener('loadeddata', function() {
-        findElement("introtext").style.display = "";
+        findElement("introtext").innerText = "Enter the simulation?";
       }, false);
     </script>
 </body>
