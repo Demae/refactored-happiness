@@ -17,9 +17,9 @@
     </div>
 
     <script type="text/javascript">
-      document.getElementById("video").addEventListener('loadeddata', function() {
+      window.addEventListener('load', function () {
         findElement("introtext").innerText = "Enter the simulation?";
-      }, false);
+      });
     </script>
 </body>
 </html>
