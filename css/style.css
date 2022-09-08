@@ -54,6 +54,41 @@ video {
   left: 0;
 }
 
+.loading {
+  cursor: none;
+  padding-top: 38.4px;
+  text-align: center;
+  color: #444;
+  font-family: 'Courier New';
+}
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis 2s infinite;
+  animation: ellipsis 2s infinite;
+  content: "\2026";
+}
+
+@keyframes ellipsis {
+  from {
+      width: 2px;
+  }
+  to {
+      width: 15px;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  from {
+      width: 2px;
+  }
+  to {
+      width: 15px;
+  }
+}
+
 @keyframes backColourRotate {
   from {
       background: linear-gradient(90deg, #ff7575 0%, #ff9875 4%, #ffba75 8%, #ffdd75 12%, #ffff75 16%, #ddff75 20%, #baff75 24%, #98ff75 28%, #75ff75 32%, #75ff98 36%, #75ffba 40%, #75ffdd 44%, #75ffff 48%, #75ddff 52%, #75baff 56%, #7598ff 60%, #7575ff 64%, #9875ff 68%, #ba75ff 72%, #dd75ff 76%, #ff75ff 80%, #ff75dd 84%, #ff75ba 88%, #ff7598 92%, #ff7575 96%);
@@ -265,39 +300,5 @@ video {
   to {
       background: linear-gradient(90deg, #ff7575 0%, #ff9875 4%, #ffba75 8%, #ffdd75 12%, #ffff75 16%, #ddff75 20%, #baff75 24%, #98ff75 28%, #75ff75 32%, #75ff98 36%, #75ffba 40%, #75ffdd 44%, #75ffff 48%, #75ddff 52%, #75baff 56%, #7598ff 60%, #7575ff 64%, #9875ff 68%, #ba75ff 72%, #dd75ff 76%, #ff75ff 80%, #ff75dd 84%, #ff75ba 88%, #ff7598 92%, #ff7575 96%);
       -webkit-background-clip: text
-  }
-}
-
-.loading {
-  padding-top: 38.4px;
-  text-align: center;
-  color: #444;
-  font-family: 'Courier New';
-}
-
-.loading:after {
-  overflow: hidden;
-  display: inline-block;
-  vertical-align: bottom;
-  -webkit-animation: ellipsis 2s infinite;
-  animation: ellipsis 2s infinite;
-  content: "\2026";
-}
-
-@keyframes ellipsis {
-  from {
-      width: 2px;
-  }
-  to {
-      width: 15px;
-  }
-}
-
-@-webkit-keyframes ellipsis {
-  from {
-      width: 2px;
-  }
-  to {
-      width: 15px;
   }
 }
