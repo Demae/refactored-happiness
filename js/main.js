@@ -118,28 +118,32 @@ function toggleVideo() {
   (findElement("video").paused) ? findElement("video").play() : findElement("video").pause();
 }
 
-function removeText() {
-  findElement("main").innerHTML = ``;
+function toggleAudio() {
+  (findElement("audio").paused) ? findElement("audio").play() : findElement("audio").pause();
 }
 
 function revealText() {
   findElement("main").innerHTML = `
     <h1 class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
-    <p style="font-family:'Courier New'; margin-bottom:0;">made to f**k with your head</p>
-    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555">a scrumptious web project from your neighbourhood haxor</p>
-    <p class="buttonmain" onclick="customError();">[[random error]]&nbsp;</p>
-    <p class="buttonmain" onclick="toggleVideo();"">[[toggle video]]</p>
+    <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
+    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your neighbourhood haxor</p>
+    <p class="buttonmain fadetext" onclick="customError();" id="third">[[random error]]&nbsp;</p>
+    <p class="buttonmain fadetext" onclick="toggleVideo();" id="third">[[toggle video]]&nbsp;</p>
+    <p class="buttonmain fadetext" onclick="toggleAudio();" id="third">[[toggle audio]]</p>
   `;
+}
+
+function removeText() {
+  findElement("main").innerHTML = ``;
 }
 
 function playVideo()
 {
-  findElement("video").style.display = "";
-  findElement("video").play();
-
+  toggleVideo();
+  toggleAudio();
   removeText();
 
   setTimeout(function() {
     revealText();
-  }, 2200);
+  }, 2600);
 }
