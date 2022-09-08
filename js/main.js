@@ -148,7 +148,7 @@ function toggleAudio() {
 }
 
 function toggleFullscreen() {
-  if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent) ) {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent) ) {
     return;
   }
   (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
