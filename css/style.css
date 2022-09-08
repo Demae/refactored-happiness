@@ -277,20 +277,25 @@ video {
   overflow: hidden;
   display: inline-block;
   vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4,end) 1350ms infinite;
-  animation: ellipsis steps(4,end) 1350ms infinite;
-  content: "\2026"; /* ascii code for the ellipsis character */
-  width: 0px;
+  -webkit-animation: ellipsis 2s infinite;
+  animation: ellipsis 2s infinite;
+  content: "\2026";
 }
 
 @keyframes ellipsis {
-  to {
-    width: 20px;
-  }
+  from {
+        width: 2px;
+    }
+    to {
+        width: 15px;
+    }
 }
 
 @-webkit-keyframes ellipsis {
-  to {
-    width: 20px;
-  }
+  from {
+        width: 2px;
+    }
+    to {
+        width: 15px;
+    }
 }
