@@ -170,7 +170,7 @@ function playVideo()
   toggleVideo();
   toggleAudio();
   removeText();
-  enterFullscreen();
+  //enterFullscreen();
 
   setTimeout(function() {
     revealText();
