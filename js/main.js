@@ -154,9 +154,7 @@ function toggleAudio() {
 }
 
 function toggleFullscreen() {
-  if (!window.isMobile()) {
-    (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
-  }
+  (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
 }
 
 function revealText() {
@@ -178,7 +176,13 @@ function initMain()
   toggleVideo();
   toggleAudio();
   removeText();
-  enterFullscreen();
+  if (!window.isMobile()) {
+    enterFullscreen();
+  }
+  else
+  {
+    developerMode();
+  }
 
   setTimeout(function() {
     revealText();
