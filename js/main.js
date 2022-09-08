@@ -154,10 +154,9 @@ function toggleAudio() {
 }
 
 function toggleFullscreen() {
-  if (window.mobileCheck()) {
-    return;
+  if (!window.mobileCheck()) {
+    (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
   }
-  (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
 }
 
 function revealText() {
