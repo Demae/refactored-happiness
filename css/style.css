@@ -265,3 +265,32 @@ video {
         -webkit-background-clip: text
     }
 }
+
+.loading {
+  padding-top: 38.4px;
+  text-align: center;
+  color: #444;
+  font-family: 'Courier New';
+}
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 1350ms infinite;
+  animation: ellipsis steps(4,end) 1350ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
