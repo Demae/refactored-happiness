@@ -179,10 +179,6 @@ function initMain()
   if (!window.isMobile()) {
     enterFullscreen();
   }
-  else
-  {
-    developerMode();
-  }
 
   setTimeout(function() {
     revealText();
