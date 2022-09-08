@@ -124,10 +124,10 @@ function removeText() {
 
 function revealText() {
   findElement("main").innerHTML = `
-    <h1 style="font-family:verdana" class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
+    <h1 class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
     <p style="font-family:'Courier New'; margin-bottom:0;">made to f**k with your head</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555">a scrumptious web project from your neighbourhood haxor</p>
-    <p class="buttonmain" onclick="customError();">[[random error]]</p>
+    <p class="buttonmain" onclick="customError();">[[random error]]&nbsp;</p>
     <p class="buttonmain" onclick="toggleVideo();"">[[toggle video]]</p>
   `;
 }
