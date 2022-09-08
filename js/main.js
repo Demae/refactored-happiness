@@ -168,7 +168,7 @@ function removeText() {
   findElement("main").innerHTML = ``;
 }
 
-function playVideo()
+function initMain()
 {
   toggleVideo();
   toggleAudio();
