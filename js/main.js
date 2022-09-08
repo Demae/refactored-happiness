@@ -178,7 +178,7 @@ function initMain()
   toggleVideo();
   toggleAudio();
   removeText();
-  //enterFullscreen();
+  enterFullscreen();
 
   setTimeout(function() {
     revealText();
