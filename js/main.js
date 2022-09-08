@@ -1,4 +1,5 @@
 var findElement = document.getElementById.bind(document);
+var mainDoc = document.documentElement;
 
 var HTTP_STATUS_CODES = {
         '100' : 'Continue',
@@ -113,6 +114,30 @@ function customError() {
   throw error;
 }
 
+function enterFullscreen() {
+  if (mainDoc.requestFullscreen) {
+    mainDoc.requestFullscreen();
+  }
+  else if (mainDoc.webkitRequestFullscreen) {
+    mainDoc.webkitRequestFullscreen();
+  }
+  else if (elem.msRequestFullscreen) {
+    mainDoc.msRequestFullscreen();
+  }
+}
+
+function exitFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  }
+  else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+  else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  }
+}
+
 function toggleVideo() {
   (findElement("video").style.display == "none") ? findElement("video").style.display = "" : findElement("video").style.display = "none";
   (findElement("video").paused) ? findElement("video").play() : findElement("video").pause();
@@ -122,12 +147,15 @@ function toggleAudio() {
   (findElement("audio").paused) ? findElement("audio").play() : findElement("audio").pause();
 }
 
+function toggleFullscreen() {
+  (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
+}
+
 function revealText() {
   findElement("main").innerHTML = `
     <h1 class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
     <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your neighbourhood haxor</p>
-    <p class="buttonmain fadetext" onclick="customError();" id="third">[[random error]]&nbsp;</p>
     <p class="buttonmain fadetext" onclick="toggleVideo();" id="third">[[toggle video]]&nbsp;</p>
     <p class="buttonmain fadetext" onclick="toggleAudio();" id="third">[[toggle audio]]</p>
   `;
@@ -142,8 +170,20 @@ function playVideo()
   toggleVideo();
   toggleAudio();
   removeText();
+  enterFullscreen();
 
   setTimeout(function() {
     revealText();
   }, 2600);
+}
+
+function developerMode() {
+  findElement("main").insertAdjacentHTML('beforeend', `
+    <p class="buttonmain" onclick="toggleFullscreen();" id="third">&nbsp;[[toggle fullscreen]]&nbsp;</p>
+        <p class="buttonmain" onclick="customError();" id="third">[[random error]]</p>
+  `);
+
+  document.body.contentEditable = true;
+
+  return 'ok nerd';
 }

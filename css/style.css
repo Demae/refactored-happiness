@@ -62,22 +62,6 @@
   animation-delay: 3s;
 }
 
-@keyframes fadein {
-  to { opacity: 1; }  
-}
-
-@-moz-keyframes fadein {
-  to { opacity: 1; }
-}
-
-@-webkit-keyframes fadein {
-  to { opacity: 1; }
-}
-
-@-o-keyframes fadein {
-  to { opacity: 1; }
-}
-
 .gradbody {
   width: 100vw;
   height: 100vh;
@@ -100,15 +84,6 @@
   animation: colourRotateForwards 2s linear infinite
 }
 
-video {
-  object-fit: cover;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
 .loading {
   cursor: none;
   padding-top: 38.4px;
@@ -124,6 +99,15 @@ video {
   -webkit-animation: ellipsis 2s infinite;
   animation: ellipsis 2s infinite;
   content: "\2026";
+}
+
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 @keyframes ellipsis {
@@ -142,6 +126,22 @@ video {
   to {
       width: 15px;
   }
+}
+
+@keyframes fadein {
+  to { opacity: 1; }  
+}
+
+@-moz-keyframes fadein {
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+  to { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+  to { opacity: 1; }
 }
 
 @keyframes backColourRotate {
