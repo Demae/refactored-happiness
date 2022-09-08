@@ -182,7 +182,7 @@ function initMain()
 
   setTimeout(function() {
     revealText();
-  }, 2600);
+  }, 2650);
 }
 
 function developerMode() {
