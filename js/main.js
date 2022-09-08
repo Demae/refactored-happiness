@@ -113,6 +113,11 @@ function customError() {
   throw error;
 }
 
+function toggleVideo() {
+  (findElement("video").style.display == "none") ? findElement("video").style.display = "" : findElement("video").style.display = "none";
+  (findElement("video").paused) ? findElement("video").play() : findElement("video").pause();
+}
+
 function removeText() {
   findElement("main").innerHTML = ``;
 }
@@ -122,8 +127,8 @@ function revealText() {
     <h1 style="font-family:verdana" class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
     <p style="font-family:'Courier New'; margin-bottom:0;">made to f**k with your head</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555">a scrumptious web project from your neighbourhood haxor</p>
-    <p style="font-family:verdana; margin:0; padding-top:8px; display:inline-block;" class="textmain" onclick="customError();">[[random error]]</p>
-    <p style="font-family:verdana; margin:0; padding-top:8px; display:inline-block;" class="textmain"">[[about me]]</p>
+    <p class="buttonmain" onclick="customError();">[[random error]]</p>
+    <p class="buttonmain" onclick="toggleVideo();"">[[toggle video]]</p>
   `;
 }
 
