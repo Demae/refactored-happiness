@@ -1,5 +1,7 @@
 var findElement = document.getElementById.bind(document);
 var mainDoc = document.documentElement;
+window.errorName = "N/A";
+window.errorMsg = "N/A";
 
 var HTTP_STATUS_CODES = {
         '100' : 'Continue',
@@ -53,7 +55,7 @@ var HTTP_STATUS_CODES = {
         '418' : "I'm a teapot",
         '419' : 'Page Expired',
         '420' : 'Method Failure',
-        '420-2' : 'Enhance Your Calm',
+        '420' : 'Enhance Your Calm',
         '421' : 'Misdirected Request',
         '422' : 'Unprocessable Entity',
         '423' : 'Locked',
@@ -69,16 +71,16 @@ var HTTP_STATUS_CODES = {
         '449' : 'Retry With',
         '450' : 'Blocked by Windows Parental Controls',
         '451' : 'Unavailable For Legal Reasons',
-        '451-2' : 'Redirect',
-        '460' : '',
-        '463' : '',
+        '451' : 'Redirect',
+        '460' : 'N/A',
+        '463' : 'N/A',
         '494' : 'Request Header Too Large',
         '495' : 'SSL Certificate Error',
         '496' : 'SSL Certificate Required',
         '497' : 'HTTP Request Sent to HTTPS Port',
         '498' : 'Invalid Token',
         '499' : 'Token Required',
-        '499-2' : 'Client Closed Request',
+        '499' : 'Client Closed Request',
         '500' : 'Internal Server Error',
         '501' : 'Not Implemented',
         '502' : 'Bad Gateway',
@@ -101,17 +103,20 @@ var HTTP_STATUS_CODES = {
         '527' : 'Railgun Error',
         '529' : 'Site is overloaded',
         '530' : 'Site is frozen',
-        '530-2' : '',
+        '530' : 'N/A',
         '561' : 'Unauthorized',
         '598' : 'Network Read Timeout Error',
         '599' : 'Network Connect Timeout Error'
     };
 
+function hrefError() {
+  window.location.href = "error.html";
+}
+
 function customError() {
   var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];
-  const error = new Error(HTTP_STATUS_CODES[name]);
-  error.name = name;
-  throw error;
+  window.errorName = name;
+  window.errorMsg = HTTP_STATUS_CODES[name];
 }
 
 function enterFullscreen() {
@@ -188,7 +193,7 @@ function initMain()
 function developerMode() {
   findElement("main").insertAdjacentHTML('beforeend', `
     <p class="buttonmain" onclick="toggleFullscreen();" id="third">&nbsp;[[toggle fullscreen]]&nbsp;</p>
-        <p class="buttonmain" onclick="customError();" id="third">[[random error]]</p>
+    <p class="buttonmain" onclick="hrefError();" id="third">[[random error]]</p>
   `);
 
   document.body.contentEditable = true;

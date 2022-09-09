@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>PP</title>
+	<link rel="stylesheet" href="css/style.css">
+    <script src="js/main.js" type="text/javascript"></script>
+</head>
+<body style="overflow: hidden" class="gradbody">
+	<div id="errormain" class="maincont">
+      <div id="errorderive">
+        <h2 style="font-size: 42px; margin-bottom: 0px;" class="textmain" id="errortitle">404</h2>
+        <p style="font-family:verdana; font-size:32px; margin-top:0px;" id="errormsg">Not Allowed</p>
+        <p style="font-family:'Courier New'; margin-bottom:0;" id="errorprompt">Please return to the home page.</p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+	window.onload = function() {
+		customError();
+	    findElement("errortitle").innerText = window.errorName;
+	    findElement("errormsg").innerText = window.errorMsg;
+	}
+	</script>
+</body>
+</html>
