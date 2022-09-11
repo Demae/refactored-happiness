@@ -11,7 +11,7 @@
         <h2 style="font-size: 42px; margin-bottom: 8px;" class="textmain" id="errortitle">404</h2>
         <p style="font-family:verdana; font-size:32px; margin-top:0px;" id="errormsg">Not Allowed</p>
         <p style="font-family:'Courier New'; margin-bottom:0; display:inline;" id="errorprompt">Please return to the </p>
-        <a style="font-family:'Courier New'; color:white;" href="index.html">home page</a>
+        <a style="font-family:'Courier New'; color:white;" href="https://femboys.tv">home page</a>
         <p style="font-family:'Courier New'; display: inline; margin-left: -0.25em;">.</p>
       </div>
     </div>
@@ -19,8 +19,9 @@
     <script type="text/javascript">
 	window.onload = function() {
 		customError();
-	    findElement("errortitle").innerText = window.errorName;
-	    findElement("errormsg").innerText = window.errorMsg;
+	  findElement("errortitle").innerText = window.errorName;
+	  findElement("errormsg").innerText = window.errorMsg;
+	  document.title = window.errorMsg;
 	}
 	</script>
 </body>

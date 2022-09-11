@@ -113,10 +113,17 @@ function hrefError() {
   window.location.href = "error.html";
 }
 
-function customError() {
-  var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];
-  window.errorName = name;
-  window.errorMsg = HTTP_STATUS_CODES[name];
+function customError(a) {
+  if (!a) {
+    var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];
+    window.errorName = name;
+    window.errorMsg = HTTP_STATUS_CODES[name];
+  }
+  else
+  {
+    window.errorName = a;
+    window.errorMsg = HTTP_STATUS_CODES[a];
+  }
 }
 
 function enterFullscreen() {
@@ -166,7 +173,7 @@ function revealText() {
   findElement("main").innerHTML = `
     <h1 class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
     <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
-    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your neighbourhood haxor</p>
+    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your local haxor</p>
     <p class="buttonmain fadetext" onclick="toggleVideo();" id="third">[[toggle video]]&nbsp;</p>
     <p class="buttonmain fadetext" onclick="toggleAudio();" id="third">[[toggle audio]]</p>
   `;
