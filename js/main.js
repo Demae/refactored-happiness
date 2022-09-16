@@ -172,7 +172,7 @@ function toggleFullscreen() {
 
 function revealText() {
   findElement("main").innerHTML = `
-    <h1 class="textmainsecondary" onClick="window.location.reload();">femboys.tv</h1>
+    <div class="textmainsecondary"><span onClick="window.location.reload();">femboys.tv</span></div>
     <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your local haxor</p>
     <p class="buttonmain fadetext" onclick="toggleVideo();" id="third">[[toggle video]]&nbsp;</p>

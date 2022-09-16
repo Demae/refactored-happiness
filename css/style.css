@@ -74,11 +74,17 @@
 }
 
 .textmainsecondary {
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
   color: white;
   font-family: verdana;
 }
 
-.textmainsecondary:hover {
+.textmainsecondary span:hover {
   cursor: default;
   color: transparent;
   animation: colourRotateForwards 2s linear infinite
