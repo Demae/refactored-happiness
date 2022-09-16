@@ -110,44 +110,34 @@ var HTTP_STATUS_CODES = {
   '599' : 'Network Connect Timeout Error'
 };
 
-function hrefError() {
-  window.location.href = "error.html";
+function customError(code) {
+  if (!code) {
+    var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];
+    return [name, HTTP_STATUS_CODES[name]]
+  }
+  return [code, HTTP_STATUS_CODES[code]]
 }
 
-function customError(a) {
-  if (!a) {
-    var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];
-    window.errorName = name;
-    window.errorMsg = HTTP_STATUS_CODES[name];
+function toggleFullscreen(forceEnter) {
+  var element;
+  var method;
+  if (forceEnter == true || (window.screenTop && window.screenY))
+  {
+    element = document.body;
+    method = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
   }
   else
   {
-    window.errorName = a;
-    window.errorMsg = HTTP_STATUS_CODES[a];
+    element = document;
+    method = element.cancelFullScreen || element.webkitCancelFullScreen || element.mozCancelFullScreen || element.exitFullscreen || elements.webkitExitFullscreen;
   }
-}
-
-function enterFullscreen() {
-  if (mainDoc.requestFullscreen) {
-    mainDoc.requestFullscreen();
-  }
-  else if (mainDoc.webkitRequestFullscreen) {
-    mainDoc.webkitRequestFullscreen();
-  }
-  else if (elem.msRequestFullscreen) {
-    mainDoc.msRequestFullscreen();
-  }
-}
-
-function exitFullscreen() {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  }
-  else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  }
-  else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
+  if (method) {
+      method.call(element);
+  } else if (typeof window.ActiveXObject !== "undefined") {
+      var wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+          wscript.SendKeys("{F11}");
+      }
   }
 }
 
@@ -166,17 +156,13 @@ function toggleAudio() {
   (findElement("audio").paused) ? findElement("audio").play() : findElement("audio").pause();
 }
 
-function toggleFullscreen() {
-  (!window.screenTop && !window.screenY) ? exitFullscreen() : enterFullscreen();
-}
-
 function revealText() {
   findElement("main").innerHTML = `
     <div class="textmainsecondary"><span onClick="window.location.reload();">femboys.tv</span></div>
     <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your local haxor</p>
     <p class="buttonmain fadetext" onclick="toggleVideo();" id="third">[[toggle video]]&nbsp;</p>
-    <p class="buttonmain fadetext" onclick="toggleAudio();" id="third">[[toggle audio]]</p>
+    <p class="buttonmain fadetext" onclick="toggleAudio();" id="fourth">[[toggle audio]]</p>
   `;
 }
 
@@ -190,7 +176,7 @@ function initMain()
   toggleAudio();
   removeText();
   if (!window.isMobile()) {
-    enterFullscreen();
+    toggleFullscreen(true);
   }
 
   setTimeout(function() {
@@ -199,12 +185,12 @@ function initMain()
 }
 
 function developerMode() {
+  findElement("fourth").innerText += "\u00A0";
   findElement("main").insertAdjacentHTML('beforeend', `
-    <p class="buttonmain" onclick="toggleFullscreen();" id="third">&nbsp;[[toggle fullscreen]]&nbsp;</p>
-    <p class="buttonmain" onclick="hrefError();" id="third">[[random error]]</p>
+    <p class="buttonmain" onclick="toggleFullscreen();" id="fourth">[[toggle fullscreen]]&nbsp;</p>
+    <p class="buttonmain" onclick="location.href = '404.html';" id="fourth">[[random error]]</p>
   `);
 
   document.body.contentEditable = true;
-
   return 'ok nerd';
 }

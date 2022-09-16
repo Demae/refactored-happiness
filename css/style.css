@@ -62,6 +62,10 @@
   animation-delay: 3s;
 }
 
+#fourth {
+  animation-delay: 3s;
+}
+
 .gradbody {
   width: 100vw;
   height: 100vh;
