@@ -176,12 +176,24 @@ function initMain()
   toggleAudio();
   removeText();
   if (!window.isMobile()) {
-    toggleFullscreen(true);
+    //toggleFullscreen(true);
   }
 
   setTimeout(function() {
     revealText();
   }, 2650);
+
+  setTimeout(function() {
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
+    document.getElementsByTagName("body")[0].insertAdjacentHTML('beforeend', `
+      <div class="maindiv" id="seconddiv">
+        <div class="secondcont">
+          <h2 style="font-family: verdana;">Hello Mortal</h2>
+          <p style="font-family: 'Courier New';">How are you doing? Good. Good to hear.</p>
+        </div>
+      </div>
+    `)
+  }, 7650);
 }
 
 function developerMode() {
