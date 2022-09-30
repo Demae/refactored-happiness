@@ -174,12 +174,18 @@ function removeText() {
 function scrollNext() {
   if (!currentWindow)
   {
-    findElement("seconddiv").scrollIntoView({ behaviour: "smooth" });
+    findElement("seconddiv").scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+    });
     currentWindow += 1;
   }
   else
   {
-    findElement("firstdiv").scrollIntoView({ behaviour: "smooth" });
+    findElement("firstdiv").scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+    });
     currentWindow -= 1;
   }
 }
@@ -196,6 +202,10 @@ function initMain()
   setTimeout(function() {
     revealText();
   }, 2650);
+
+  setTimeout(function() {
+    findElement("main2").style.display = "";
+  }, 7650);
 }
 
 function developerMode() {
