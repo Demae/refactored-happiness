@@ -92,6 +92,17 @@
   background-image: linear-gradient(left, #12100E 0%, #090947 100%);
 }
 
+.gradbodysec {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-image: -webkit-linear-gradient(left, #12100E 0%, #090947 100%);
+  background-image: -moz-linear-gradient(left, #12100E 0%, #090947 100%);
+  background-image: -o-linear-gradient(left, #12100E 0%, #090947 100%);
+  background-image: linear-gradient(left, #12100E 0%, #090947 100%);
+}
+
 .textmainsecondary {
   font-size: 2em;
   margin-top: 0.67em;

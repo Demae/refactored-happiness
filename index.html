@@ -3,6 +3,7 @@
 <head>
     <title>femboys.tv</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="js/main.js" type="text/javascript"></script>
 </head>
 <body style="overflow: hidden;" class="gradbody">
@@ -27,16 +28,24 @@
     <div class="nextdiv" id="seconddiv">
         <h2 class="buttonmain" style="padding-top: 20px; padding-left:50%" onclick="scrollNext();">^</h2>
       <div id="main2" class="secondcont">
-        <h2 style="font-family: verdana;">Welcome Back, Mortal</h2>
-        <p style="font-family: 'Courier New';">How are you doing? Good. Good to hear.</p>
+        <h2 style="font-family: verdana;" id="secondmain">Welcome Back</h2>
+        <p style="font-family: 'Courier New';" id="secondsec">Where are you from?</p>
       </div>
     </div>
 
     <script type="text/javascript">
+      window.onbeforeunload = function() {
+        window.scrollTo(0, 0);
+      }
       window.onload = function() {
         findElement("introtext").innerText = "Enter the simulation?";
         findElement("introtext").className = "textmain";
       };
+      $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=915b09f1fd424e4ba6724e0cd9d906d6", function(data) {
+        findElement("secondmain").innerText += ", " + data.ip_address + ".";
+        findElement("secondsec").innerText += " " + data.country;
+        (data.security.is_vpn) ? findElement("secondsec").innerText += ". Right..." : findElement("secondsec").innerText += ". Cool...";
+      })
     </script>
 </body>
 </html>
