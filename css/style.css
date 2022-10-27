@@ -8,8 +8,6 @@
   position: absolute;
   top: 45%;
   left: 50%;
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
 }
 
@@ -47,10 +45,6 @@
 
 .fadetext {
   opacity: 0;
-  -webkit-animation: fadein 2s forwards;
-  -moz-animation: fadein 2s forwards;
-  -ms-animation: fadein 2s forwards;
-  -o-animation: fadein 2s forwards;
   animation: fadein 2s forwards;
 }
 
@@ -75,9 +69,7 @@
   height: 100vh;
   padding: 0;
   margin: 0;
-  background-image: -webkit-linear-gradient(left, #12100E 0%, #090947 100%);
   background-image: -moz-linear-gradient(left, #12100E 0%, #090947 100%);
-  background-image: -o-linear-gradient(left, #12100E 0%, #090947 100%);
   background-image: linear-gradient(left, #12100E 0%, #090947 100%);
 }
 
@@ -110,7 +102,6 @@
   overflow: hidden;
   display: inline-block;
   vertical-align: bottom;
-  -webkit-animation: ellipsis 2s infinite;
   animation: ellipsis 2s infinite;
   content: "\2026";
 }
@@ -124,29 +115,8 @@
   }
 }
 
-@-webkit-keyframes ellipsis {
-  from {
-      width: 2px;
-  }
-  to {
-      width: 15px;
-  }
-}
-
 @keyframes fadein {
   to { opacity: 1; }  
-}
-
-@-moz-keyframes fadein {
-  to { opacity: 1; }
-}
-
-@-webkit-keyframes fadein {
-  to { opacity: 1; }
-}
-
-@-o-keyframes fadein {
-  to { opacity: 1; }
 }
 
 @keyframes colourRotateForwards {
