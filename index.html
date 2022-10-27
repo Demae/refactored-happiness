@@ -4,29 +4,24 @@
     <title>femboys.tv</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
 </head>
 <body style="overflow: hidden;" class="gradbody">
-    <audio style="display: none;" preload="auto" loop id="audio">
-      <source src="msc.mp3" type="audio/mpeg">
-    </audio>
-
     <div class="maindiv" id="firstdiv">
       <video style="display: none; object-fit: cover;" preload="auto" playsinline muted loop id="video" width="100%" height="100%">
         <source src="msc.mp4" type="video/mp4">
       </video>
+      <audio style="display: none;" preload="auto" loop id="audio">
+        <source src="msc.mp3" type="audio/mpeg">
+      </audio>
       <div id="main" class="maincont">
         <div id="mainderive" onclick="initMain();">
           <h2 class="loading" id="introtext">Loading</h2>
         </div>
       </div>
-      <div id="main2" class="maincont" style="margin:0; bottom: 0; padding-top:710px; display: none;">
-        <h2 class="buttonmain fadetext" style="transform: rotate(180deg);" onclick="scrollNext();">^</h2>
-      </div>
     </div>
 
     <div class="nextdiv" id="seconddiv">
-        <h2 class="buttonmain" style="padding-top: 20px; padding-left:50%" onclick="scrollNext();">^</h2>
       <div id="main2" class="secondcont">
         <h2 style="font-family: verdana;" id="secondmain">Welcome</h2>
         <p style="font-family: 'Courier New';" id="secondsec">Where are you from?</p>
@@ -34,6 +29,7 @@
     </div>
 
     <script type="text/javascript">
+      var scrollDisable = false;
       window.onbeforeunload = function() {
         window.scrollTo(0, 0);
       }
@@ -41,11 +37,24 @@
         findElement("introtext").innerText = "Enter the simulation?";
         findElement("introtext").className = "textmain";
       };
-      $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=915b09f1fd424e4ba6724e0cd9d906d6", function(data) {
+      $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=915b09f1fd424e4ba6724e0cd9d906d6", function(data)
+      {
         findElement("secondmain").innerText += ", " + data.ip_address + ".";
         findElement("secondsec").innerText += " " + data.country;
         (data.security.is_vpn) ? findElement("secondsec").innerText += ". Right..." : findElement("secondsec").innerText += ". Cool...";
       })
+      $('body').on('mousewheel DOMMouseScroll', function (e)
+      {
+        if (scrollable && !scrollDisable)
+        {
+          scrollDisable = true;
+          scrollNext();
+          setTimeout(function(){
+            scrollDisable = false;
+          }, 1500);
+        }
+        return false;
+      });
     </script>
 </body>
 </html>
