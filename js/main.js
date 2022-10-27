@@ -112,7 +112,8 @@ var HTTP_STATUS_CODES = {
 };
 
 function customError(code) {
-  if (!code) {
+  if (!code)
+  {
     var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];
     return [name, HTTP_STATUS_CODES[name]]
   }
@@ -132,11 +133,15 @@ function toggleFullscreen(forceEnter) {
     element = document;
     method = element.cancelFullScreen || element.webkitCancelFullScreen || element.mozCancelFullScreen || element.exitFullscreen || elements.webkitExitFullscreen;
   }
-  if (method) {
+  if (method)
+  {
       method.call(element);
-  } else if (typeof window.ActiveXObject !== "undefined") {
+  }
+  else if (typeof window.ActiveXObject !== "undefined")
+  {
       var wscript = new ActiveXObject("WScript.Shell");
-      if (wscript !== null) {
+      if (wscript !== null)
+      {
           wscript.SendKeys("{F11}");
       }
   }
