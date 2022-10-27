@@ -94,7 +94,8 @@ function initMain()
 
 function developerMode() {
   findElement("fourth").innerText += "\u00A0";
-  findElement("main").insertAdjacentHTML('beforeend', `
+  findElement("main").insertAdjacentHTML('beforeend',
+  `
     <p class="buttonmain" onclick="toggleFullscreen();" id="fourth">[[toggle fullscreen]]&nbsp;</p>
     <p class="buttonmain" onclick="location.href = '404.html';" id="fourth">[[random error]]</p>
   `);
