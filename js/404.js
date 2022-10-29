@@ -1,4 +1,12 @@
 var get = document.getElementById.bind(document);
+
+window.addEventListener("load", () => {
+  let error = customError();
+  get("errortitle").innerText = error[0];
+  get("errormsg").innerText = error[1];
+  document.title = error[1];
+});
+
 var HTTP_STATUS_CODES = {
   '069' : 'Nice',
   '100' : 'Continue',
