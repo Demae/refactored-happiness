@@ -1,5 +1,53 @@
 var get = document.getElementById.bind(document);
 var scrollable = 0;
+history.scrollRestoration = "manual";
+
+window.addEventListener("load", () => {
+  get("introtext").innerText = "Enter the simulation?";
+  get("introtext").className = "textmain";
+  var script = document.createElement("script");
+  script.innerHTML =
+  `
+    var scrollDisable = false;
+    var windowIndex = 0;
+    $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=915b09f1fd424e4ba6724e0cd9d906d6", function(data)
+    {
+      get("secondmain").innerText += ", " + data.ip_address + ".";
+      get("secondsec").innerText += " " + data.country;
+      (data.security.is_vpn) ? get("secondsec").innerText += ". Right..." : get("secondsec").innerText += ". Cool...";
+    })
+    $('body').on('mousewheel DOMMouseScroll', function (e)
+    {
+      if (scrollable && !scrollDisable)
+      {
+        scrollDisable = true;
+        if (!windowIndex && e.originalEvent.wheelDelta < 0)
+        {
+          $('html, body').animate({
+            scrollTop: $("#seconddiv").offset().top
+          }, 1000);
+          windowIndex += 1;
+        }
+        else if (windowIndex && e.originalEvent.wheelDelta >= 1)
+        {
+          $('html, body').animate({
+            scrollTop: $("#firstdiv").offset().top
+          }, 1000);
+          windowIndex -= 1;
+        }
+        setTimeout(function(){
+          scrollDisable = false;
+        }, 1500);
+      }
+      return false;
+    });
+  `
+  document.body.append(script);
+});
+
+window.addEventListener("beforeunload", () => {
+  window.scrollTo(0, 0);
+});
 
 function toggleFullscreen(forceEnter) {
   var element;
