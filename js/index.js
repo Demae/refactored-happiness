@@ -55,25 +55,6 @@ function revealText() {
   `;
 }
 
-function scrollNext() {
-  if (!currentWindow)
-  {
-    findElement("seconddiv").scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    });
-    currentWindow += 1;
-  }
-  else
-  {
-    findElement("firstdiv").scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    });
-    currentWindow -= 1;
-  }
-}
-
 function initMain()
 {
   toggleVideo();
