@@ -1,5 +1,4 @@
-var findElement = document.getElementById.bind(document);
-var currentWindow = 0;
+var get = document.getElementById.bind(document);
 var scrollable = 0;
 
 function toggleFullscreen(forceEnter) {
@@ -36,16 +35,16 @@ window.isMobile = function() {
 };
 
 function toggleVideo() {
-  (findElement("video").style.display == "none") ? findElement("video").style.display = "" : findElement("video").style.display = "none";
-  (findElement("video").paused) ? findElement("video").play() : findElement("video").pause();
+  (get("video").style.display == "none") ? get("video").style.display = "" : get("video").style.display = "none";
+  (get("video").paused) ? get("video").play() : get("video").pause();
 }
 
 function toggleAudio() {
-  (findElement("audio").paused) ? findElement("audio").play() : findElement("audio").pause();
+  (get("audio").paused) ? get("audio").play() : get("audio").pause();
 }
 
 function revealText() {
-  findElement("main").innerHTML =
+  get("main").innerHTML =
   `
     <div class="textmainsecondary"><span onClick="window.location.reload();">femboys.tv</span></div>
     <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
@@ -59,7 +58,7 @@ function initMain()
 {
   toggleVideo();
   toggleAudio();
-  findElement("main").innerHTML = ``;
+  get("main").innerHTML = ``;
   if (!window.isMobile()) {
     //toggleFullscreen(true);
   }
@@ -69,13 +68,13 @@ function initMain()
   }, 2650);
 
   setTimeout(function() {
-    scrollable = 1;
+    scrollable = true;
   }, 7650);
 }
 
 function developerMode() {
-  findElement("fourth").innerText += "\u00A0";
-  findElement("main").insertAdjacentHTML('beforeend',
+  get("fourth").innerText += "\u00A0";
+  get("main").insertAdjacentHTML('beforeend',
   `
     <p class="buttonmain" onclick="toggleFullscreen();" id="fourth">[[toggle fullscreen]]&nbsp;</p>
     <p class="buttonmain" onclick="location.href = '404.html';" id="fourth">[[random error]]</p>

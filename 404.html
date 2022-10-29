@@ -20,8 +20,8 @@
 		window.onload = function()
 		{
 			let error = customError();
-		  findElement("errortitle").innerText = error[0];
-		  findElement("errormsg").innerText = error[1];
+		  get("errortitle").innerText = error[0];
+		  get("errormsg").innerText = error[1];
 		  document.title = error[1];
 		}
 	</script>

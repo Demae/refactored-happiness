@@ -1,4 +1,4 @@
-var findElement = document.getElementById.bind(document);
+var get = document.getElementById.bind(document);
 var HTTP_STATUS_CODES = {
   '069' : 'Nice',
   '100' : 'Continue',

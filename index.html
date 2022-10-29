@@ -35,14 +35,14 @@
         window.scrollTo(0, 0);
       }
       window.onload = function() {
-        findElement("introtext").innerText = "Enter the simulation?";
-        findElement("introtext").className = "textmain";
+        get("introtext").innerText = "Enter the simulation?";
+        get("introtext").className = "textmain";
       };
       $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=915b09f1fd424e4ba6724e0cd9d906d6", function(data)
       {
-        findElement("secondmain").innerText += ", " + data.ip_address + ".";
-        findElement("secondsec").innerText += " " + data.country;
-        (data.security.is_vpn) ? findElement("secondsec").innerText += ". Right..." : findElement("secondsec").innerText += ". Cool...";
+        get("secondmain").innerText += ", " + data.ip_address + ".";
+        get("secondsec").innerText += " " + data.country;
+        (data.security.is_vpn) ? get("secondsec").innerText += ". Right..." : get("secondsec").innerText += ". Cool...";
       })
       $('body').on('mousewheel DOMMouseScroll', function (e)
       {
