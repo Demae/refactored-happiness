@@ -7,22 +7,23 @@
 </head>
 <body style="overflow: hidden" class="gradbody">
 	<div id="errormain" class="maincont">
-      <div id="errorderive">
-        <h2 style="font-size: 42px; margin-bottom: 8px;" class="textmain" id="errortitle">404</h2>
-        <p style="font-family:verdana; font-size:32px; margin-top:0px;" id="errormsg">Not Allowed</p>
-        <p style="font-family:'Courier New'; margin-bottom:0; display:inline;" id="errorprompt">Please return to the </p>
-        <a style="font-family:'Courier New'; color:white;" href="https://femboys.tv">home page</a>
-        <p style="font-family:'Courier New'; display: inline; margin-left: -0.25em;">.</p>
-      </div>
+    <div id="errorderive">
+      <h2 style="font-size: 42px; margin-bottom: 8px;" class="textmain" id="errortitle">404</h2>
+      <p style="font-family:verdana; font-size:32px; margin-top:0px;" id="errormsg">Not Allowed</p>
+      <p style="font-family:'Courier New'; margin-bottom:0; display:inline;" id="errorprompt">Please return to the </p>
+      <a style="font-family:'Courier New'; color:white;" href="https://femboys.tv">home page</a>
+      <p style="font-family:'Courier New'; display: inline; margin-left: -0.25em;">.</p>
     </div>
+  </div>
 
-    <script type="text/javascript">
-	window.onload = function() {
-		let error = customError();
-	  findElement("errortitle").innerText = error[0];
-	  findElement("errormsg").innerText = error[1];
-	  document.title = error[1];
-	}
+  <script type="text/javascript">
+		window.onload = function()
+		{
+			let error = customError();
+		  findElement("errortitle").innerText = error[0];
+		  findElement("errormsg").innerText = error[1];
+		  document.title = error[1];
+		}
 	</script>
 </body>
 </html>
