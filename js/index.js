@@ -16,7 +16,7 @@ window.addEventListener("load", () => {
       get("secondsec").innerText += " " + data.country;
       (data.security.is_vpn) ? get("secondsec").innerText += ". Right..." : get("secondsec").innerText += ". Cool...";
     })
-    $('body').on('mousewheel DOMMouseScroll', function (e)
+    $('body').on('wheel DOMMouseScroll', function (e)
     {
       if (scrollable && !scrollDisable)
       {
