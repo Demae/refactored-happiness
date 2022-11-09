@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
     {
       get("secondmain").innerText += ", " + data.ip_address + ".";
       get("secondsec").innerText += " " + data.country;
-      isHosting(data.connection.autonomous_system_number) ? get("secondsec").innerText += ". Right..." : get("secondsec").innerText += ". Cool...";
+      isHosting(data.connection) ? get("secondsec").innerText += ". Right..." : get("secondsec").innerText += ". Cool...";
     })
     $('body').on('wheel DOMMouseScroll', function (e)
     {
@@ -102,9 +102,9 @@ function revealText() {
   `;
 }
 
-function isHosting(number) // https://github.com/calamity-inc/Soup
+function isHosting(data) // https://github.com/calamity-inc/Soup
 {
-  switch (number)
+  switch (data.autonomous_system_number)
   {
   case 3214: // xTom GmbH
   case 4785: // xTom Limited
@@ -224,6 +224,13 @@ function isHosting(number) // https://github.com/calamity-inc/Soup
   case 22099:
     return true;
   }
+  if (/cdn|colocation|cloud|datacenter|data( |\-)center|ddos|dedi|layer|scale|server|vps|hetzner|ovh|contabo|digitalocean|amazon|google\s*llc|akamai|microsoft|alibaba|fastly|linode|aruba|godaddy|oracle/i.test(data.organization_name))
+    return true;
+
+  else if (data.organization_name.includes("host") && !data.organization_name.includes("afrihost"))
+    return true;
+
+  return false;
 }
 
 function initMain()
