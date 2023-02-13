@@ -12,9 +12,9 @@ window.addEventListener("load", () => {
     var windowIndex = 0;
     $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=bd3ccae482854c72b406f81b5129b18a", function(data)
     {
-      get("secondmain").innerText += ", " + data.ip_address + ".";
-      get("secondsec").innerText += " " + data.country;
-      isHosting(data.connection) ? get("secondsec").innerText += ". Right..." : get("secondsec").innerText += ". Cool...";
+      get("secondmain").innerText += ", " + data.country + " inhabitant.";
+      get("secondsec").innerText += " " + data.connection.isp_name;
+      isHosting(data.connection) ? get("secondsec").innerText += ". How original." : get("secondsec").innerText += ". I see you.";
     })
     $('body').on('wheel DOMMouseScroll', function (e)
     {
@@ -227,7 +227,7 @@ function isHosting(data) // https://github.com/calamity-inc/Soup
   if (/cdn|colocation|cloud|datacenter|data( |\-)center|ddos|dedi|layer|scale|server|vps|hetzner|ovh|contabo|digitalocean|amazon|google\s*llc|akamai|microsoft|alibaba|fastly|linode|aruba|godaddy|oracle/i.test(data.organization_name))
     return true;
 
-  else if (data.organization_name.includes("host") && !data.organization_name.includes("afrihost"))
+  else if (data.isp_name.includes("host") && !data.isp_name.includes("afrihost"))
     return true;
 
   return false;
