@@ -10,7 +10,7 @@ window.addEventListener("load", () => {
   `
     var scrollDisable = false;
     var windowIndex = 0;
-    $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=915b09f1fd424e4ba6724e0cd9d906d6", function(data)
+    $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=bd3ccae482854c72b406f81b5129b18a", function(data)
     {
       get("secondmain").innerText += ", " + data.ip_address + ".";
       get("secondsec").innerText += " " + data.country;
