@@ -232,7 +232,7 @@ function isHosting(data) // https://github.com/calamity-inc/Soup
     if (data.isp_name.includes("host") && !data.isp_name.includes("afrihost"))
       return true;
   }
-  else if (data.organization_name)
+  if (data.organization_name)
   {
     if (data.organization_name.includes("host") && !data.organization_name.includes("afrihost"))
           return true;
