@@ -6,7 +6,7 @@ function listenerTrigger()
 {
   var video = get("video");
   console.log(video.readyState);
-  if (video.readyState != 4)
+  if (!(video.readyState >= 2))
   {
     window.setTimeout(listenerTrigger, 50);
   }
