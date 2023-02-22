@@ -65,8 +65,8 @@
 }
 
 .gradbody {
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   padding: 0;
   margin: 0;
   background-image: -webkit-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
