@@ -74,6 +74,11 @@ function listenerTrigger()
 {
   var video = get("video");
   console.log(video.readyState);
+  if (isMobile())
+  {
+    initPageLoaded();
+    return;
+  }
   if (!(video.readyState >= 2))
   {
     window.setTimeout(listenerTrigger, 50);
