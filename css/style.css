@@ -1,4 +1,5 @@
 .maindiv, .secdiv, .thirddiv {
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -8,6 +9,15 @@
   position: absolute;
   top: 45%;
   left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.seccont {
+  color: white;
+  text-align: left;
+  position: absolute;
+  top: 10%;
+  left: 153.6px;
   transform: translateX(-50%) translateY(-50%);
 }
 
@@ -21,6 +31,20 @@
 .textmain:hover {
   cursor: default;
   text-align: center;
+  color: white;
+  font-family: 'Courier New';
+}
+
+.gradtextmain {
+  padding-top: 0px;
+  text-align: left;
+  color: #333;
+  font-family: 'Courier New';
+}
+
+.gradtextmain:hover {
+  cursor: default;
+  text-align: left;
   color: white;
   font-family: 'Courier New';
 }
@@ -73,6 +97,26 @@
   background-image: -moz-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
   background-image: -o-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
   background-image: linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+}
+
+.graddiv {
+  overflow: hidden;
+  height: 100vh;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .textmainsecondary {
