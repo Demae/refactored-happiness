@@ -74,20 +74,13 @@ function listenerTrigger()
 {
   var video = get("video");
   console.log(video.readyState);
-  if (!isMobile())
+  if (!(video.readyState >= 2))
   {
-    if (!(video.readyState >= 2))
-    {
-      window.setTimeout(listenerTrigger, 50);
-    }
-    else
-    {
-      initPageLoaded();
-    }
+    window.setTimeout(listenerTrigger, 50);
   }
   else
   {
-    video.addEventListener('loadedmetadata', initPageLoaded);
+    initPageLoaded();
   }
 }
 
