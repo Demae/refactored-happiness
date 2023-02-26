@@ -2,27 +2,6 @@ var get = document.getElementById.bind(document);
 var scrollable = 0;
 history.scrollRestoration = "manual";
 
-function listenerTrigger()
-{
-  var video = get("video");
-  console.log(video.readyState);
-  if (!isMobile())
-  {
-    if (!(video.readyState >= 2))
-    {
-      window.setTimeout(listenerTrigger, 50);
-    }
-    else
-    {
-      initPageLoaded();
-    }
-  }
-  else
-  {
-    video.addEventListener('loadedmetadata', initPageLoaded);
-  }
-}
-
 function initPageLoaded()
 {
   get("introtext").innerText = "Enter the simulation?";
@@ -89,6 +68,27 @@ function initPageLoaded()
     });
   `
   document.body.append(script);
+}
+
+function listenerTrigger()
+{
+  var video = get("video");
+  console.log(video.readyState);
+  if (!isMobile())
+  {
+    if (!(video.readyState >= 2))
+    {
+      window.setTimeout(listenerTrigger, 50);
+    }
+    else
+    {
+      initPageLoaded();
+    }
+  }
+  else
+  {
+    video.addEventListener('canplay', initPageLoaded);
+  }
 }
 
 window.addEventListener("beforeunload", () => {
