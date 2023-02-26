@@ -87,7 +87,7 @@ function listenerTrigger()
   }
   else
   {
-    video.addEventListener('canplay', initPageLoaded);
+    video.addEventListener('loadedmetadata', initPageLoaded);
   }
 }
 
