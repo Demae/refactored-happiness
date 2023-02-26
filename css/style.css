@@ -1,4 +1,4 @@
-.maindiv, .nextdiv {
+.maindiv, .secdiv, .thirddiv {
   height: 100vh;
 }
 

@@ -30,19 +30,43 @@ function listenerTrigger()
         if (scrollable && !scrollDisable)
         {
           scrollDisable = true;
-          if (!windowIndex && e.originalEvent.wheelDelta < 0)
+          if (e.originalEvent.wheelDelta < 0) //down
           {
-            $('html, body').animate({
-              scrollTop: $("#seconddiv").offset().top
-            }, 1000);
-            windowIndex += 1;
+            if (windowIndex == 0)
+            {
+              $('html, body').animate(
+              {
+                scrollTop: $("#seconddiv").offset().top
+              }, 1000);
+              windowIndex += 1;
+            }
+            else if (windowIndex == 1)
+            {
+              $('html, body').animate(
+              {
+                scrollTop: $("#thirddiv").offset().top
+              }, 1000);
+              windowIndex += 1;
+            }
           }
-          else if (windowIndex && e.originalEvent.wheelDelta >= 1)
+          else
           {
-            $('html, body').animate({
-              scrollTop: $("#firstdiv").offset().top
-            }, 1000);
-            windowIndex -= 1;
+            if (windowIndex == 1)
+            {
+              $('html, body').animate(
+              {
+                scrollTop: $("#firstdiv").offset().top
+              }, 1000);
+              windowIndex -= 1;
+            }
+            else if (windowIndex == 2)
+            {
+              $('html, body').animate(
+              {
+                scrollTop: $("#seconddiv").offset().top
+              }, 1000);
+              windowIndex -= 1;
+            }
           }
           setTimeout(function(){
             scrollDisable = false;
