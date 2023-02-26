@@ -6,77 +6,89 @@ function listenerTrigger()
 {
   var video = get("video");
   console.log(video.readyState);
-  if (!(video.readyState >= 2))
+  if (!isMobile())
   {
-    window.setTimeout(listenerTrigger, 50);
+    if (!(video.readyState >= 2))
+    {
+      window.setTimeout(listenerTrigger, 50);
+    }
+    else
+    {
+      initPageLoaded();
+    }
   }
   else
   {
-    get("introtext").innerText = "Enter the simulation?";
-    get("introtext").className = "textmain";
-    var script = document.createElement("script");
-    script.innerHTML =
-    `
-      var scrollDisable = false;
-      var windowIndex = 0;
-      $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=bd3ccae482854c72b406f81b5129b18a", function(data)
-      {
-        get("secondmain").innerText += ", " + data.country + " inhabitant.";
-        get("secondsec").innerText += " " + data.connection.isp_name;
-        isHosting(data.connection) ? get("secondsec").innerText += ". How original." : get("secondsec").innerText += ". I see you.";
-      })
-      $('body').on('wheel DOMMouseScroll', function (e)
-      {
-        if (scrollable && !scrollDisable)
-        {
-          scrollDisable = true;
-          if (e.originalEvent.wheelDelta < 0) //down
-          {
-            if (windowIndex == 0)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#seconddiv").offset().top
-              }, 1000);
-              windowIndex += 1;
-            }
-            else if (windowIndex == 1)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#thirddiv").offset().top
-              }, 1000);
-              windowIndex += 1;
-            }
-          }
-          else
-          {
-            if (windowIndex == 1)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#firstdiv").offset().top
-              }, 1000);
-              windowIndex -= 1;
-            }
-            else if (windowIndex == 2)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#seconddiv").offset().top
-              }, 1000);
-              windowIndex -= 1;
-            }
-          }
-          setTimeout(function(){
-            scrollDisable = false;
-          }, 1500);
-        }
-        return false;
-      });
-    `
-    document.body.append(script);
+    video.addEventListener('loadedmetadata', initPageLoaded);
   }
+}
+
+function initPageLoaded()
+{
+  get("introtext").innerText = "Enter the simulation?";
+  get("introtext").className = "textmain";
+  var script = document.createElement("script");
+  script.innerHTML =
+  `
+    var scrollDisable = false;
+    var windowIndex = 0;
+    $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=bd3ccae482854c72b406f81b5129b18a", function(data)
+    {
+      get("secondmain").innerText += ", " + data.country + " inhabitant.";
+      get("secondsec").innerText += " " + data.connection.isp_name;
+      isHosting(data.connection) ? get("secondsec").innerText += ". How original." : get("secondsec").innerText += ". I see you.";
+    })
+    $('body').on('wheel DOMMouseScroll', function (e)
+    {
+      if (scrollable && !scrollDisable)
+      {
+        scrollDisable = true;
+        if (e.originalEvent.wheelDelta < 0) //down
+        {
+          if (windowIndex == 0)
+          {
+            $('html, body').animate(
+            {
+              scrollTop: $("#seconddiv").offset().top
+            }, 1000);
+            windowIndex += 1;
+          }
+          else if (windowIndex == 1)
+          {
+            $('html, body').animate(
+            {
+              scrollTop: $("#thirddiv").offset().top
+            }, 1000);
+            windowIndex += 1;
+          }
+        }
+        else
+        {
+          if (windowIndex == 1)
+          {
+            $('html, body').animate(
+            {
+              scrollTop: $("#firstdiv").offset().top
+            }, 1000);
+            windowIndex -= 1;
+          }
+          else if (windowIndex == 2)
+          {
+            $('html, body').animate(
+            {
+              scrollTop: $("#seconddiv").offset().top
+            }, 1000);
+            windowIndex -= 1;
+          }
+        }
+        setTimeout(function(){
+          scrollDisable = false;
+        }, 1500);
+      }
+      return false;
+    });
+  `
+  document.body.append(script);
 }
 
 window.addEventListener("beforeunload", () => {
