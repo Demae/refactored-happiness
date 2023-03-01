@@ -226,8 +226,15 @@ function listenerTrigger()
     {
       window.setTimeout(listenerTrigger, 50);
     }
+    else
+    {
+      initPageLoaded();
+    }
   }
-  initPageLoaded();
+  else
+  {
+    initPageLoaded();
+  }
 }
 
 window.addEventListener("beforeunload", () =>
