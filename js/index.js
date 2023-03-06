@@ -1,5 +1,6 @@
 var get = document.getElementById.bind(document);
 var scrollable = 0;
+var conStorage = 0;
 history.scrollRestoration = "manual";
 
 function initPageLoaded()
@@ -11,12 +12,9 @@ function initPageLoaded()
   `
     var scrollDisable = false;
     var windowIndex = 0;
-    $.getJSON("https://ipgeolocation.abstractapi.com/v1/?api_key=bd3ccae482854c72b406f81b5129b18a", function(data)
-    {
-      get("secondmain").innerText += ", " + data.country + " inhabitant.";
-      get("secondsec").innerText += " " + data.connection.isp_name;
-      get("secondsec").innerText += isHosting(data.connection) ? ". How original." : ". I see you.";
-    })
+    get("secondmain").innerText += ", " + conStorage.country.native_name + " inhabitant.";
+    get("secondsec").innerText += " " + conStorage.as.org.replace(/ .*/,'');
+    get("secondsec").innerText += isHosting(conStorage.as) ? ". How original." : ". I see you.";
     $('body').on('wheel DOMMouseScroll', function (e)
     {
       if (scrollable && !scrollDisable)
@@ -73,7 +71,7 @@ function initPageLoaded()
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
 {
-  switch (data.autonomous_system_number)
+  switch (data.number)
   {
   case 3214: // xTom GmbH
   case 4785: // xTom Limited
@@ -193,18 +191,15 @@ function isHosting(data) // https://github.com/calamity-inc/Soup
   case 22099:
     return true;
   }
-  if (/cdn|colocation|cloud|datacenter|data( |\-)center|ddos|dedi|layer|scale|server|vps|hetzner|ovh|contabo|digitalocean|amazon|google\s*llc|akamai|microsoft|alibaba|fastly|linode|aruba|godaddy|oracle/i.test(data.organization_name))
+  if (/cdn|colocation|cloud|datacenter|data( |\-)center|ddos|dedi|layer|scale|server|vps|hetzner|ovh|contabo|digitalocean|amazon|google\s*llc|akamai|microsoft|alibaba|fastly|linode|aruba|godaddy|oracle/i.test(data.org))
     return true;
 
-  if (data.isp_name)
+  if (data.org)
   {
-    if (data.isp_name.includes("host") && !data.isp_name.includes("afrihost"))
+    if (data.org.includes("host") && !data.org.includes("afrihost"))
+    {
       return true;
-  }
-  if (data.organization_name)
-  {
-    if (data.organization_name.includes("host") && !data.organization_name.includes("afrihost"))
-      return true;
+    }
   }
 
   return false;
@@ -217,8 +212,9 @@ window.isMobile = function()
   return check;
 };
 
-function listenerTrigger()
+function listenerTrigger(result)
 {
+  conStorage = result;
   var video = get("video");
   if (!isMobile())
   {
