@@ -22,13 +22,7 @@
       <div id="mainderive" onclick="initMain();">
         <h2 class="loading" id="introtext">Loading</h2>
         <script type="text/javascript">
-          apimon.myip().then(ip =>
-          {
-            apimon.ip(ip).then(result =>
-            {
-              listenerTrigger(result);
-            }).catch(()=>{});
-          }).catch(()=>{});
+          listenerTrigger();
         </script>
       </div>
     </div>

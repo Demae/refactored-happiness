@@ -7,66 +7,75 @@ function initPageLoaded()
 {
   get("introtext").innerText = "Enter the simulation?";
   get("introtext").className = "textmain";
-  var script = document.createElement("script");
-  script.innerHTML =
-  `
-    var scrollDisable = false;
-    var windowIndex = 0;
-    get("secondmain").innerText += ", " + conStorage.country.native_name + " inhabitant.";
-    get("secondsec").innerText += " " + conStorage.as.org.replace(/ .*/,'');
-    get("secondsec").innerText += isHosting(conStorage.as) ? ". How original." : ". I see you.";
-    $('body').on('wheel DOMMouseScroll', function (e)
-    {
-      if (scrollable && !scrollDisable)
+  setTimeout(function() {
+    var script = document.createElement("script");
+    script.innerHTML =
+    `
+      var scrollDisable = false;
+      var windowIndex = 0;
+      apimon.myip().then(ip =>
       {
-        scrollDisable = true;
-        if (e.originalEvent.wheelDelta < 0) //down
+        apimon.ip(ip).then(result =>
         {
-          if (windowIndex == 0)
+          conStorage = result;
+          get("secondmain").innerText += ", " + conStorage.country.native_name + " inhabitant.";
+          get("secondsec").innerText += " " + conStorage.as.org.replace(/ .*/,'');
+          get("secondsec").innerText += isHosting(conStorage.as) ? ". How original." : ". I see you.";
+        }).catch(()=>{});
+      }).catch(()=>{});
+      $('body').on('wheel DOMMouseScroll', function (e)
+      {
+        if (scrollable && !scrollDisable)
+        {
+          scrollDisable = true;
+          if (e.originalEvent.wheelDelta < 0) //down
           {
-            $('html, body').animate(
+            if (windowIndex == 0)
             {
-              scrollTop: $("#seconddiv").offset().top
-            }, 1000);
-            windowIndex += 1;
+              $('html, body').animate(
+              {
+                scrollTop: $("#seconddiv").offset().top
+              }, 1000);
+              windowIndex += 1;
+            }
+            else if (windowIndex == 1)
+            {
+              $('html, body').animate(
+              {
+                scrollTop: $("#thirddiv").offset().top
+              }, 1000);
+              windowIndex += 1;
+            }
           }
-          else if (windowIndex == 1)
+          else
           {
-            $('html, body').animate(
+            if (windowIndex == 1)
             {
-              scrollTop: $("#thirddiv").offset().top
-            }, 1000);
-            windowIndex += 1;
+              $('html, body').animate(
+              {
+                scrollTop: $("#firstdiv").offset().top
+              }, 1000);
+              windowIndex -= 1;
+            }
+            else if (windowIndex == 2)
+            {
+              $('html, body').animate(
+              {
+                scrollTop: $("#seconddiv").offset().top
+              }, 1000);
+              windowIndex -= 1;
+            }
           }
+          setTimeout(function()
+          {
+            scrollDisable = false;
+          }, 1500);
         }
-        else
-        {
-          if (windowIndex == 1)
-          {
-            $('html, body').animate(
-            {
-              scrollTop: $("#firstdiv").offset().top
-            }, 1000);
-            windowIndex -= 1;
-          }
-          else if (windowIndex == 2)
-          {
-            $('html, body').animate(
-            {
-              scrollTop: $("#seconddiv").offset().top
-            }, 1000);
-            windowIndex -= 1;
-          }
-        }
-        setTimeout(function()
-        {
-          scrollDisable = false;
-        }, 1500);
-      }
-      return false;
-    });
-  `
-  document.body.append(script);
+        return false;
+      });
+    `
+    document.body.append(script);
+  }, 0);
 }
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
@@ -212,9 +221,8 @@ window.isMobile = function()
   return check;
 };
 
-function listenerTrigger(result)
+function listenerTrigger()
 {
-  conStorage = result;
   var video = get("video");
   if (!isMobile())
   {
