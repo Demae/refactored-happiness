@@ -111,7 +111,8 @@ var HTTP_STATUS_CODES = {
   '530' : 'N/A',
   '561' : 'Unauthorized',
   '598' : 'Network Read Timeout Error',
-  '599' : 'Network Connect Timeout Error'
+  '599' : 'Network Connect Timeout Error',
+  'Diatenx' : 'Good luck to those of you who found this'
 };
 
 function customError(code) {
