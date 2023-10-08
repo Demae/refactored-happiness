@@ -234,8 +234,8 @@ function revealText() {
   get("main").innerHTML =
   `
     <div class="section-title-gradient"><span onClick="window.location.reload();">femboys.tv</span></div>
-    <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
-    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #A0A0A0" class="fadetext" id="second">a scrumptious web project from your local haxor</p>
+    <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">designed to twist your perception</p>
+    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #A0A0A0" class="fadetext" id="second">a dark digital delicacy; reality's boundaries are about to blur</p>
     <p class="section-button fadetext" onclick="toggleElement('bgVideo');" id="third">[[toggle video]]&nbsp;</p>
     <p class="section-button fadetext" onclick="toggleElement('bgAudio');" id="fourth">[[toggle audio]]</p>
   `;
@@ -265,7 +265,7 @@ function initMain()
 
   setTimeout(function() {
     revealText();
-  }, 2650);
+  }, 2507);
 
   setTimeout(function() {
     fp.setMouseWheelScrolling(true);
