@@ -1,78 +1,25 @@
 var get = document.getElementById.bind(document);
-var scrollable = 0;
 var conStorage = 0;
-history.scrollRestoration = "manual";
+var fp = 0;
 
 function initPageLoaded()
 {
-  get("introtext").innerText = "Enter the simulation?";
-  get("introtext").className = "textmain";
+  get("section1-welcome").innerText = "Enter the simulation?";
+  get("section1-welcome").className = "text-main";
   setTimeout(function() {
     var script = document.createElement("script");
     script.innerHTML =
     `
-      var scrollDisable = false;
-      var windowIndex = 0;
       apimon.myip().then(ip =>
       {
         apimon.ip(ip).then(result =>
         {
           conStorage = result;
-          get("secondmain").innerText += ", " + conStorage.country.native_name + " inhabitant.";
-          get("secondsec").innerText += " " + conStorage.as.org.replace(/ .*/,'');
-          get("secondsec").innerText += isHosting(conStorage.as) ? ". How original." : ". I see you.";
+          get("section2-welcome").innerText += ", " + conStorage.country.native_name + " inhabitant.";
+          get("section2-identify").innerText += " " + conStorage.as.org.replace(/ .*/,'');
+          get("section2-identify").innerText += isHosting(conStorage.as) ? ". How original." : ". I see you.";
         }).catch(()=>{});
       }).catch(()=>{});
-      $('body').on('wheel DOMMouseScroll', function (e)
-      {
-        if (scrollable && !scrollDisable)
-        {
-          scrollDisable = true;
-          if (e.originalEvent.wheelDelta < 0) //down
-          {
-            if (windowIndex == 0)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#seconddiv").offset().top
-              }, 1000);
-              windowIndex += 1;
-            }
-            else if (windowIndex == 1)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#thirddiv").offset().top
-              }, 1000);
-              windowIndex += 1;
-            }
-          }
-          else
-          {
-            if (windowIndex == 1)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#firstdiv").offset().top
-              }, 1000);
-              windowIndex -= 1;
-            }
-            else if (windowIndex == 2)
-            {
-              $('html, body').animate(
-              {
-                scrollTop: $("#seconddiv").offset().top
-              }, 1000);
-              windowIndex -= 1;
-            }
-          }
-          setTimeout(function()
-          {
-            scrollDisable = false;
-          }, 1500);
-        }
-        return false;
-      });
     `
     document.body.append(script);
   }, 0);
@@ -223,7 +170,7 @@ window.isMobile = function()
 
 function listenerTrigger()
 {
-  var video = get("video");
+  var video = get("bgVideo");
   if (!isMobile())
   {
     if (!(video.readyState >= 2))
@@ -274,7 +221,7 @@ function toggleFullscreen(forceEnter) {
 }
 
 function toggleElement(elementName) {
-  if (elementName == "video")
+  if (elementName == "bgVideo")
   {
     get(elementName).style.display = (get(elementName).style.display == "none") ? "" : "none";
   }
@@ -286,11 +233,11 @@ function toggleElement(elementName) {
 function revealText() {
   get("main").innerHTML =
   `
-    <div class="textmainsecondary"><span onClick="window.location.reload();">femboys.tv</span></div>
+    <div class="section-title-gradient"><span onClick="window.location.reload();">femboys.tv</span></div>
     <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">made to f**k with your head</p>
-    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #555" class="fadetext" id="second">a scrumptious web project from your local haxor</p>
-    <p class="buttonmain fadetext" onclick="toggleElement('video');" id="third">[[toggle video]]&nbsp;</p>
-    <p class="buttonmain fadetext" onclick="toggleElement('audio');" id="fourth">[[toggle audio]]</p>
+    <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #A0A0A0" class="fadetext" id="second">a scrumptious web project from your local haxor</p>
+    <p class="section-button fadetext" onclick="toggleElement('video');" id="third">[[toggle video]]&nbsp;</p>
+    <p class="section-button fadetext" onclick="toggleElement('audio');" id="fourth">[[toggle audio]]</p>
   `;
 }
 
@@ -312,8 +259,8 @@ function getAndFadeAudio(audioName)
 
 function initMain()
 {
-  toggleElement('video');
-  toggleElement('audio');
+  toggleElement('bgVideo');
+  toggleElement('bgAudio');
   get("main").innerHTML = ``;
 
   setTimeout(function() {
@@ -321,8 +268,9 @@ function initMain()
   }, 2650);
 
   setTimeout(function() {
-    scrollable = true;
-    getAndFadeAudio("audio");
+    fp.setMouseWheelScrolling(true);
+    fp.setAllowScrolling(true);
+    getAndFadeAudio("bgAudio");
   }, 7650);
 }
 
@@ -330,8 +278,8 @@ function developerMode() {
   get("fourth").innerText += "\u00A0";
   get("main").insertAdjacentHTML('beforeend',
   `
-    <p class="buttonmain" onclick="toggleFullscreen();" id="fourth">[[toggle fullscreen]]&nbsp;</p>
-    <p class="buttonmain" onclick="location.href = '404.html';" id="fourth">[[random error]]</p>
+    <p class="section-button" onclick="toggleFullscreen();" id="fourth">[[toggle fullscreen]]&nbsp;</p>
+    <p class="section-button" onclick="location.href = '404.html';" id="fourth">[[random error]]</p>
   `);
   document.body.contentEditable = true;
   return 'ok nerd';

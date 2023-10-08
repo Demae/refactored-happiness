@@ -2,8 +2,8 @@ var get = document.getElementById.bind(document);
 
 window.addEventListener("load", () => {
   let error = customError();
-  get("errortitle").innerText = error[0];
-  get("errormsg").innerText = error[1];
+  get("section1-error-welcome").innerText = error[0];
+  get("section1-error-message").innerText = error[1];
   document.title = error[1];
 });
 
@@ -115,7 +115,8 @@ var HTTP_STATUS_CODES = {
   'Diatenx' : 'Good luck to those of you who found this'
 };
 
-function customError(code) {
+function customError(code)
+{
   if (!code)
   {
     var name = Object.keys(HTTP_STATUS_CODES)[Math.floor(Math.random()*Object.keys(HTTP_STATUS_CODES).length)];

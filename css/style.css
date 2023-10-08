@@ -1,9 +1,22 @@
-.maindiv, .secdiv, .thirddiv {
-  overflow: hidden;
-  height: 100vh;
+.section {
+  background-image: -webkit-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -moz-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -o-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  z-index: -1;
 }
 
-.maincont {
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay-content {
   color: white;
   text-align: center;
   position: absolute;
@@ -12,7 +25,16 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
-.seccont {
+.overlay-content-sub {
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.overlay-content-second {
   color: white;
   text-align: left;
   position: absolute;
@@ -21,45 +43,45 @@
   transform: translateX(-50%) translateY(-50%);
 }
 
-.textmain {
+.text-main {
   padding-top: 38.4px;
   text-align: center;
-  color: #D3D3D3;
+  color: #444;
   font-family: 'Courier New';
 }
 
-.textmain:hover {
+.text-main:hover {
   cursor: default;
   text-align: center;
   color: white;
   font-family: 'Courier New';
 }
 
-.gradtextmain {
+.section-text-main {
   padding-top: 0px;
   text-align: left;
   color: #333;
   font-family: 'Courier New';
 }
 
-.gradtextmain:hover {
+.section-text-main:hover {
   cursor: default;
   text-align: left;
   color: white;
   font-family: 'Courier New';
 }
 
-.buttonmain {
+.section-button {
   font-family:verdana;
   text-align: center;
   margin:0;
   padding-top:8px;
   display:inline-block;
-  color:#444;
+  color: #555;
   font-size:15px;
 }
 
-.buttonmain:hover {
+.section-button:hover {
   cursor: default;
   text-align: center;
   color: white;
@@ -89,19 +111,13 @@
 }
 
 .gradbody {
-  min-width: 100vw;
-  min-height: 100vh;
-  padding: 0;
-  margin: 0;
   background-image: -webkit-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
   background-image: -moz-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
   background-image: -o-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
   background-image: linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
 }
 
-.graddiv {
-  overflow: hidden;
-  height: 100vh;
+#section3 {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
@@ -119,7 +135,7 @@
   }
 }
 
-.textmainsecondary {
+.section-title-gradient {
   font-size: 2em;
   margin-top: 0.67em;
   margin-bottom: 0.67em;
@@ -130,13 +146,13 @@
   font-family: verdana;
 }
 
-.textmainsecondary span:hover {
+.section-title-gradient span:hover {
   cursor: default;
   color: transparent;
   animation: colourRotateForwards 2s linear infinite
 }
 
-.loading {
+.loading-animation {
   cursor: none;
   padding-top: 38.4px;
   text-align: center;
@@ -144,7 +160,7 @@
   font-family: 'Courier New';
 }
 
-.loading:after {
+.loading-animation:after {
   overflow: hidden;
   display: inline-block;
   vertical-align: bottom;
