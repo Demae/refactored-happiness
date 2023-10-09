@@ -6,6 +6,19 @@
   z-index: -1;
 }
 
+#cover {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-image: -webkit-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -moz-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -o-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  z-index: 1;
+}
+
 video {
   position: absolute;
   top: 0;
@@ -159,6 +172,7 @@ video {
   text-align: center;
   color: #444;
   font-family: 'Courier New';
+  z-index: 2;
 }
 
 .loading-animation:after {

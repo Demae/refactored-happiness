@@ -1,12 +1,10 @@
 var get = document.getElementById.bind(document);
-var conStorage = 0;
 var fp = 0;
 
 function initPageLoaded()
 {
-  get("section1-welcome").innerText = "Enter the simulation?";
-  get("section1-welcome").className = "text-main";
-  setTimeout(function() {
+  get("cover").style.display = "none";
+  $(function() {
     var script = document.createElement("script");
     script.innerHTML =
     `
@@ -14,15 +12,14 @@ function initPageLoaded()
       {
         apimon.ip(ip).then(result =>
         {
-          conStorage = result;
-          get("section2-welcome").innerText += ", " + conStorage.country.native_name + " inhabitant.";
-          get("section2-identify").innerText += " " + conStorage.as.org.replace(/ .*/,'');
-          get("section2-identify").innerText += isHosting(conStorage.as) ? ". How original." : ". I see you.";
+          get("section2-welcome").innerText += ", " + result.country.native_name + " inhabitant.";
+          get("section2-identify").innerText += " " + result.as.org.replace(/ .*/,'');
+          get("section2-identify").innerText += isHosting(result.as) ? ". How original." : ". I see you.";
         }).catch(()=>{});
       }).catch(()=>{});
     `
     document.body.append(script);
-  }, 0);
+  });
 }
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
