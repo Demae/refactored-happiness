@@ -14,15 +14,6 @@ function waitFor(conditionFunction) {
 
 function initPageLoaded()
 {
-  if (/WebKit/i.test(navigator.userAgent))
-  {
-    const sources = bgVideo.getElementsByTagName('source');
-    for (let i = 0; i < sources.length; i++)
-    {
-      sources[i].src += "#t=0.1";
-    }
-    bgVideo.load();
-  }
   waitFor(_ => bgVideo.readyState >= 2).then(_ => {
     get("cover").style.display = "none";
     $(function() {
