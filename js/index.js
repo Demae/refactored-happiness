@@ -1,6 +1,5 @@
 var get = document.getElementById.bind(document);
 var fp = 0;
-const bgVideo = document.getElementById("bgVideo");
 
 function waitFor(conditionFunction) {
 
@@ -32,10 +31,6 @@ function initPageLoaded()
     document.body.append(script);
   });
 }
-
-bgVideo.addEventListener("loadedmetadata", () => {
-  waitFor(_ => bgVideo.readyState >= 2).then(_ => initPageLoaded());
-});
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
 {

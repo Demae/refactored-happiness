@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js/index.js" type="text/javascript"></script>
     <script src="https://cdn.hell.sh/apimon-js/latest/apimon.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
 </head>
@@ -23,7 +24,7 @@
 </div>
   <div id="fullpage">
     <div class="section" id="section1">
-      <video style="display: none;" playsinline muted loop id="bgVideo" data-keepplaying>
+      <video style="display: none;" playsinline muted loop id="bgVideo" data-keepplaying oncanplay="initPageLoaded();">
           <source src="assets/msc.webm#t=0.1" type="video/webm">
           <source src="assets/msc.mp4#t=0.1" type="video/mp4">
       </video>
@@ -73,7 +74,5 @@
       fp.setAllowScrolling(false);
     });
   </script>
-
-  <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>
