@@ -33,9 +33,9 @@ function initPageLoaded()
   });
 }
 
-bgVideo.onloadeddata = function() {
+bgVideo.addEventListener("loadedmetadata", () => {
   waitFor(_ => bgVideo.readyState >= 2).then(_ => initPageLoaded());
-}
+});
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
 {
