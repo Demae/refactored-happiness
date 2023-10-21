@@ -15,7 +15,7 @@ function waitFor(conditionFunction) {
 function initPageLoaded()
 {
   bgVideo.load();
-  waitFor(_ => bgVideo.readyState == 4).then(_ => {
+  waitFor(_ => bgVideo.readyState >= 2).then(_ => {
     get("cover").style.display = "none";
     $(function() {
       var script = document.createElement("script");
