@@ -15,6 +15,13 @@ function waitFor(conditionFunction) {
 function initPageLoaded()
 {
   bgVideo.load();
+  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+  {
+    bgVideo.play();
+    setTimeout(() => {
+      bgVideo.pause();
+    }, 50);
+  }
   waitFor(_ => bgVideo.readyState >= 2).then(_ => {
     get("cover").style.display = "none";
     $(function() {
