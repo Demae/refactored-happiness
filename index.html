@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="js/index.js" type="text/javascript"></script>
     <script src="https://cdn.hell.sh/apimon-js/latest/apimon.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.2/fullpage.min.js"></script>
 </head>
@@ -25,12 +24,12 @@
   <div id="fullpage">
     <div class="section" id="section1">
       <video style="display: none;" playsinline muted loop id="bgVideo" data-keepplaying>
-          <source src="assets/msc2.webm" type="video/webm">
-          <source src="assets/msc2.mp4" type="video/mp4">
-          Your browser does not support the video tag.
+          <source src="assets/msc.webm#t=0.1" type="video/webm">
+          <source src="assets/msc.mp4#t=0.1" type="video/mp4">
       </video>
       <audio style="display:none" id="bgAudio" preload="auto" loop data-keepplaying>
-        <source src="assets/msc.mp3" type="audio/mp3">
+        <source src="assets/msc.ogg#t=0.1" type="audio/ogg">
+        <source src="assets/msc.mp3#t=0.1" type="audio/mp3">
       </audio>
       <div id="main" class="overlay-content">
         <div id="mainderive" onclick="initMain();">
@@ -75,8 +74,6 @@
     });
   </script>
 
-  <script type="text/javascript">
-    listenerTrigger();
-  </script>
+  <script src="js/index.js" type="text/javascript"></script>
 </body>
 </html>

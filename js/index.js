@@ -1,10 +1,16 @@
 var get = document.getElementById.bind(document);
 var fp = 0;
+const bgVideo = document.getElementById("bgVideo");
 
-window.addEventListener("beforeunload", () =>
-{
-  window.scrollTo(0, 0);
-});
+function waitFor(conditionFunction) {
+
+  const poll = resolve => {
+    if(conditionFunction()) resolve();
+    else setTimeout(_ => poll(resolve), 400);
+  }
+
+  return new Promise(poll);
+}
 
 function initPageLoaded()
 {
@@ -26,6 +32,10 @@ function initPageLoaded()
     document.body.append(script);
   });
 }
+
+bgVideo.addEventListener("loadeddata", () => {
+  waitFor(_ => bgVideo.readyState >= 2).then(_ => initPageLoaded());
+});
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
 {
@@ -161,37 +171,6 @@ function isHosting(data) // https://github.com/calamity-inc/Soup
   }
 
   return false;
-}
-
-window.isMobile = function()
-{
-  var match = window.matchMedia || window.msMatchMedia;
-  if (match)
-  {
-    var mq = match("(pointer:coarse)");
-    return mq.matches;
-  }
-  return false;
-};
-
-function listenerTrigger()
-{
-  var video = get("bgVideo");
-  if (!isMobile())
-  {
-    if (!(video.readyState >= 2))
-    {
-      window.setTimeout(listenerTrigger, 50);
-    }
-    else
-    {
-      initPageLoaded();
-    }
-  }
-  else
-  {
-    initPageLoaded();
-  }
 }
 
 function toggleFullscreen(forceEnter) {
