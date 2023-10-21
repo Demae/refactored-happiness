@@ -34,7 +34,9 @@ function initPageLoaded()
 }
 
 bgVideo.addEventListener("loadeddata", () => {
+  console.log(bgVideo.readyState);
   waitFor(_ => bgVideo.readyState >= 2).then(_ => initPageLoaded());
+  console.log(bgVideo.readyState);
 });
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
