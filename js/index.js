@@ -14,13 +14,14 @@ function waitFor(conditionFunction) {
 
 function initPageLoaded()
 {
-  bgVideo.load();
   if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
   {
-    bgVideo.play();
-    setTimeout(() => {
-      bgVideo.pause();
-    }, 50);
+    const sources = bgVideo.getElementsByTagName('source');
+    for (let i = 0; i < sources.length; i++)
+    {
+      sources[i].src += "#t=0.1";
+    }
+    bgVideo.load();
   }
   waitFor(_ => bgVideo.readyState >= 2).then(_ => {
     get("cover").style.display = "none";
