@@ -14,7 +14,7 @@ function waitFor(conditionFunction) {
 
 function initPageLoaded()
 {
-  if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+  if (/WebKit/i.test(navigator.userAgent))
   {
     const sources = bgVideo.getElementsByTagName('source');
     for (let i = 0; i < sources.length; i++)
