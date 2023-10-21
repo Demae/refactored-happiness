@@ -14,25 +14,25 @@ function waitFor(conditionFunction) {
 
 function initPageLoaded()
 {
-  waitFor(_ => bgVideo.readyState >= 2).then(_ => {
-  get("cover").style.display = "none";
-  $(function() {
-    var script = document.createElement("script");
-    script.innerHTML =
-    `
-      apimon.myip().then(ip =>
-      {
-        apimon.ip(ip).then(result =>
+  waitFor(_ => bgVideo.readyState == 4).then(_ => {
+    get("cover").style.display = "none";
+    $(function() {
+      var script = document.createElement("script");
+      script.innerHTML =
+      `
+        apimon.myip().then(ip =>
         {
-          get("section2-welcome").innerText += ", " + result.country.native_name + " inhabitant.";
-          get("section2-identify").innerText += " " + result.as.org.replace(/ .*/,'');
-          get("section2-identify").innerText += isHosting(result.as) ? ". How original." : ". I see you.";
+          apimon.ip(ip).then(result =>
+          {
+            get("section2-welcome").innerText += ", " + result.country.native_name + " inhabitant.";
+            get("section2-identify").innerText += " " + result.as.org.replace(/ .*/,'');
+            get("section2-identify").innerText += isHosting(result.as) ? ". How original." : ". I see you.";
+          }).catch(()=>{});
         }).catch(()=>{});
-      }).catch(()=>{});
-    `
-    document.body.append(script);
+      `
+      document.body.append(script);
+    });
   });
- });
 }
 
 function isHosting(data) // https://github.com/calamity-inc/Soup
