@@ -25,7 +25,7 @@
     <div class="section" id="section1">
       <video style="display: none;" playsinline muted loop id="bgVideo" data-keepplaying>
         <source src="assets/msc.webm" type="video/webm">
-        <source src="assets/msc.mp4#t=0.5" type="video/mp4">
+        <source src="assets/msc.mp4#t=0.5" type="video/mp4"> <!-- iOS bypass -->
       </video>
       <audio style="display:none" id="bgAudio" preload="auto" loop data-keepplaying>
         <source src="assets/msc.ogg" type="audio/ogg">
@@ -41,6 +41,19 @@
       <div class="overlay-content">
         <h2 style="font-family: verdana;" id="section2-welcome">Hello</h2>
         <p style="font-family: 'Courier New';" id="section2-identify">Using</p>
+        <script>
+          apimon.myip().then(ip => {
+            $.getJSON('http://corpus.soup.do/locationByIp/' + ip, function(corpusResult)
+            {
+              get('section2-welcome').innerText += ', ' + corpusResult.city + ' inhabitant.';
+            });
+            $.getJSON('http://corpus.soup.do/asByIp/' + ip, function(corpusResult)
+            {
+              get('section2-identify').innerText += " " + corpusResult.name.replace(/ .*/,'');
+              get('section2-identify').innerText += (corpusResult.is_hosting) ? '.  How original' : '. I see you.';
+            });
+          });
+        </script>
       </div>
       <div class="overlay-content-sub">
         <p style="font-family: 'Courier New'; color: #444; font-size: 12px;" id="section2-note">Please note: All data presented is only locally stored.</p>
@@ -64,13 +77,13 @@
   <script>
     $(function()
     {
-      fp = new fullpage('#fullpage', {
+      fullPage = new fullpage('#fullpage', {
         licenseKey: 'gplv3-license',
         autoScrolling: true,
       });
 
-      fp.setMouseWheelScrolling(false);
-      fp.setAllowScrolling(false);
+      fullPage.setMouseWheelScrolling(false);
+      fullPage.setAllowScrolling(false);
     });
   </script>
 
