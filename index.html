@@ -50,7 +50,7 @@
             $.getJSON('https://corpus.soup.do/asByIp/' + ip, function(corpusResult)
             {
               get('section2-identify').innerText += " " + corpusResult.name.replace(/ .*/,'');
-              get('section2-identify').innerText += (corpusResult.is_hosting) ? '.  How original' : '. I see you.';
+              get('section2-identify').innerText += (corpusResult.is_hosting) ? '.  How original.' : '. I see you.';
             });
           });
         </script>
