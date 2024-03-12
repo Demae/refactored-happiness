@@ -42,15 +42,16 @@
         <h2 style="font-family: verdana;" id="section2-welcome">Hello</h2>
         <p style="font-family: 'Courier New';" id="section2-identify">Using</p>
         <script>
-          apimon.myip().then(ip => {
-            $.getJSON('https://corpus.soup.do/locationByIp/' + ip, function(corpusResult)
+          $.getJSON("https://api.ipify.org?format=jsonp&callback=?", function(json)
+          {
+            $.getJSON('https://corpus.soup.do/locationByIp/' + json.ip, function(corpusResult)
             {
               get('section2-welcome').innerText += ', ' + corpusResult.city + ' inhabitant.';
             });
-            $.getJSON('https://corpus.soup.do/asByIp/' + ip, function(corpusResult)
+            $.getJSON('https://corpus.soup.do/asByIp/' + json.ip, function(corpusResult)
             {
               get('section2-identify').innerText += " " + corpusResult.name.replace(/ .*/,'');
-              get('section2-identify').innerText += (corpusResult.is_hosting) ? '.  How original.' : '. I see you.';
+              get('section2-identify').innerText += (corpusResult.is_hosting) ? '.  How original' : '. I see you.';
             });
           });
         </script>
