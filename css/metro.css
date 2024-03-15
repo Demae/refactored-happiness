@@ -1,0 +1,30 @@
+body {
+    background-color: #98FB98;
+    font-family: 'Open Sans', sans-serif;
+    overflow: hidden;
+}
+
+.main-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.image-container img {
+    max-width: 900px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.right-container {
+    flex-grow: 1;
+    font-size: 24px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.data-container {
+    flex: 1;
+}
