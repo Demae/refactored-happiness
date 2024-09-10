@@ -12,8 +12,31 @@ function waitFor(conditionFunction) {
   return new Promise(poll);
 }
 
+function randomizeMedia()
+{
+  const videoPaths = [
+    'assets/video/msc',
+    'assets/video/mscd',
+    'assets/video/mscg'
+    ];
+
+  const audioPaths = [
+    'assets/audio/msc'
+    ];
+
+  const randomVideo = videoPaths[Math.floor(Math.random() * videoPaths.length)];
+  const randomAudio = audioPaths[Math.floor(Math.random() * audioPaths.length)];
+  get("webmvideo").src = randomVideo + ".webm";
+  get("mp4video").src = randomVideo + ".mp4#t=0.5";
+  get("oggaudio").src = randomAudio + ".ogg";
+  get("mp3audio").src = randomAudio + ".mp3";
+  get("bgVideo").load();
+  get("bgAudio").load();
+}
+
 function initPageLoaded()
 {
+  randomizeMedia();
   waitFor(_ => bgVideo.readyState >= 2).then(_ => {
     get("cover").remove();
   });
