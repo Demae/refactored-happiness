@@ -1,6 +1,5 @@
 var get = document.getElementById.bind(document);
 var fullPage = 0;
-const bgVideo = document.getElementById("bgVideo");
 
 function waitFor(conditionFunction) {
 
@@ -14,22 +13,19 @@ function waitFor(conditionFunction) {
 
 function randomizeMedia()
 {
-  const videoPaths = [
-    'assets/video/msc',
-    'assets/video/mscd',
-    'assets/video/mscg'
-    ];
+  const mediaPairs = [
+    { video: 'assets/video/msc', audio: 'assets/audio/msc' },
+    { video: 'assets/video/mscd', audio: 'assets/audio/mscd' },
+    { video: 'assets/video/mscg', audio: 'assets/audio/mscl' }
+  ];
 
-  const audioPaths = [
-    'assets/audio/msc'
-    ];
+  const randomPair = mediaPairs[Math.floor(Math.random() * mediaPairs.length)];
 
-  const randomVideo = videoPaths[Math.floor(Math.random() * videoPaths.length)];
-  const randomAudio = audioPaths[Math.floor(Math.random() * audioPaths.length)];
-  get("webmvideo").src = randomVideo + ".webm";
-  get("mp4video").src = randomVideo + ".mp4#t=0.5";
-  get("oggaudio").src = randomAudio + ".ogg";
-  get("mp3audio").src = randomAudio + ".mp3";
+  get("webmvideo").src = randomPair.video + ".webm";
+  get("mp4video").src = randomPair.video + ".mp4#t=0.5";
+  get("oggaudio").src = randomPair.audio + ".ogg";
+  get("mp3audio").src = randomPair.audio + ".mp3";
+  
   get("bgVideo").load();
   get("bgAudio").load();
 }
@@ -37,7 +33,7 @@ function randomizeMedia()
 function initPageLoaded()
 {
   randomizeMedia();
-  waitFor(_ => bgVideo.readyState >= 2).then(_ => {
+  waitFor(_ => get("bgVideo").readyState >= 2).then(_ => {
     get("cover").remove();
   });
 }
