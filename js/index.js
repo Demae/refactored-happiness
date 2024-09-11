@@ -25,7 +25,7 @@ function randomizeMedia()
   get("mp4video").src = randomPair.video + ".mp4#t=0.5";
   get("oggaudio").src = randomPair.audio + ".ogg";
   get("mp3audio").src = randomPair.audio + ".mp3";
-  
+
   get("bgVideo").load();
   get("bgAudio").load();
 }
@@ -65,10 +65,10 @@ function revealText() {
   get("main").innerHTML =
   `
     <div class="section-title-gradient"><span onClick="window.location.reload();">femboys.tv</span></div>
-    <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">designed to twist your perception</p>
+    <p style="font-family:'Courier New'; margin-bottom:0;" class="fadetext" id="first">designed to twist your perceptions</p>
     <p style="font-family:'Courier New'; margin:0; padding-top:5px; color: #A0A0A0" class="fadetext" id="second">a dark digital delicacy; reality's boundaries are about to blur</p>
-    <p class="section-button fadetext" onclick="toggleElement('bgVideo');" id="third">[[toggle video]]&nbsp;</p>
-    <p class="section-button fadetext" onclick="toggleElement('bgAudio');" id="fourth">[[toggle audio]]</p>
+    <p class="section-button fadetext" onclick="toggleElement('bgVideo');" id="third">[toggle video]&nbsp;</p>
+    <p class="section-button fadetext" onclick="toggleElement('bgAudio');" id="fourth">[toggle audio]</p>
   `;
 }
 
@@ -106,8 +106,8 @@ function developerMode() {
   get("fourth").innerText += "\u00A0";
   get("main").insertAdjacentHTML('beforeend',
   `
-    <p class="section-button" onclick="toggleFullscreen();" id="fourth">[[toggle fullscreen]]&nbsp;</p>
-    <p class="section-button" onclick="location.href = '404.html';" id="fourth">[[random error]]</p>
+    <p class="section-button" onclick="toggleFullscreen();" id="fourth">[toggle fullscreen]&nbsp;</p>
+    <p class="section-button" onclick="location.href = '404.html';" id="fourth">[random error]</p>
   `);
   document.body.contentEditable = true;
   return 'ok nerd';
