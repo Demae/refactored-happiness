@@ -11,31 +11,42 @@ function waitFor(conditionFunction) {
   return new Promise(poll);
 }
 
-function randomizeMedia()
-{
+function getUrlParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+function chooseMedia() {
   const mediaPairs = [
     { video: 'assets/video/msc', audio: 'assets/audio/msc' },
     { video: 'assets/video/mscd', audio: 'assets/audio/mscd' },
     { video: 'assets/video/mscg', audio: 'assets/audio/mscl' }
   ];
 
-  const randomPair = mediaPairs[Math.floor(Math.random() * mediaPairs.length)];
+  const pairIndex = getUrlParameter('pair');
 
-  get("webmvideo").src = randomPair.video + ".webm";
-  get("mp4video").src = randomPair.video + ".mp4#t=0.5";
-  get("oggaudio").src = randomPair.audio + ".ogg";
-  get("mp3audio").src = randomPair.audio + ".mp3";
+  let selectedPair;
+  if (pairIndex !== null && mediaPairs[pairIndex]) {
+    selectedPair = mediaPairs[pairIndex];
+  } else {
+    selectedPair = mediaPairs[Math.floor(Math.random() * mediaPairs.length)];
+  }
+
+  get("webmvideo").src = selectedPair.video + ".webm";
+  get("mp4video").src = selectedPair.video + ".mp4#t=0.5";
+  get("oggaudio").src = selectedPair.audio + ".ogg";
+  get("mp3audio").src = selectedPair.audio + ".mp3";
 
   get("bgVideo").load();
   get("bgAudio").load();
 }
 
-function initPageLoaded()
-{
-  randomizeMedia();
+function initPageLoaded() {
+  chooseMedia();
   waitFor(_ => get("bgVideo").readyState >= 2).then(_ => {
     get("cover").remove();
   });
+  //initMain();
 }
 
 function toggleFullscreen() {
@@ -99,6 +110,7 @@ function initMain()
     fullPage.setMouseWheelScrolling(true);
     fullPage.setAllowScrolling(true);
     reduceAudioVolume('bgAudio');
+    get("arrow").style.display = "";
   }, 7650);
 }
 

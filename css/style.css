@@ -174,6 +174,30 @@ video {
   content: "\2026";
 }
 
+.scroll-down {
+    position: fixed;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform: scaleX(1.5);
+    font-size: 25px;
+    opacity: 0.7;
+    animation: double-down 2.5s ease-in-out infinite;
+    color: white;
+    z-index: 1;
+}
+
+@keyframes double-down {
+    0%, 40%, 80%, 100% {
+        transform: translateX(-50%) translateY(0) scaleX(1.5);
+        opacity: 0.7;
+    }
+    20%, 60% {
+        transform: translateX(-50%) translateY(13px) scaleX(1.5);
+        opacity: 1;
+    }
+}
+
 @keyframes ellipsis {
   from {
       width: 2px;

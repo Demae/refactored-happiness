@@ -18,7 +18,7 @@
 <body>
 <div id="cover">
   <div class="overlay-content">
-    <h2 class="loading-animation" id="cover-welcome">Loading</h2>
+    <h2 class="loading-animation" id="cover-welcome">Starting up</h2>
   </div>
 </div>
   <div id="fullpage">
@@ -36,6 +36,9 @@
           <h2 class="text-main" id="section1-welcome">Enter the simulation?</h2>
         </div>
       </div>
+      <div style="display: none;" id="arrow" class="scroll-down">
+        <span>&#x2304;</span>
+      </div>
     </div>
     <div class="section" id="section2">
       <div class="overlay-content">
@@ -46,7 +49,7 @@
           {
             $.getJSON('https://corpus.soup.do/locationByIp/' + json.ip, function(corpusResult)
             {
-              get('section2-welcome').innerText += ', ' + corpusResult.city + ' inhabitant.';
+              get('section2-welcome').innerText += ', ' + corpusResult.city + ' dweller.';
             });
             $.getJSON('https://corpus.soup.do/asByIp/' + json.ip, function(corpusResult)
             {
@@ -81,6 +84,9 @@
       fullPage = new fullpage('#fullpage', {
         licenseKey: 'gplv3-license',
         autoScrolling: true,
+        afterLoad: function(origin, destination, direction) {
+          get("arrow").style.display = 'none';
+        }
       });
 
       fullPage.setMouseWheelScrolling(false);
