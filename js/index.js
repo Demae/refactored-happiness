@@ -46,7 +46,7 @@ function initPageLoaded() {
   waitFor(_ => get("bgVideo").readyState >= 2).then(_ => {
     get("cover").remove();
   });
-  //initMain();
+  initMain();
 }
 
 function toggleFullscreen() {

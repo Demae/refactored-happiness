@@ -1,8 +1,8 @@
 .section {
-  background-image: -webkit-linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
-  background-image: -moz-linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
-  background-image: -o-linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
-  background-image: linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
+  background-image: -webkit-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -moz-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -o-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
   z-index: -1;
 }
 
@@ -12,10 +12,10 @@
   width: 100vw;
   top: 0;
   left: 0;
-  background-image: -webkit-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
-  background-image: -moz-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
-  background-image: -o-linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
-  background-image: linear-gradient(109.6deg, #060202 32.4%, #891E2F 98.8%);
+  background-image: -webkit-linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
+  background-image: -moz-linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
+  background-image: -o-linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
+  background-image: linear-gradient(109.6deg, #2c003e, #4a0057, #b80085, #ff0077);
   z-index: 1;
 }
 
