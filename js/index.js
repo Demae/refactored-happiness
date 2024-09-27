@@ -43,7 +43,7 @@ function chooseMedia() {
 
 function initPageLoaded() {
   chooseMedia();
-  waitFor(_ => get("bgVideo").readyState >= 2).then(_ => {
+  waitFor(_ => get("bgVideo").readyState == 4).then(_ => {
     get("cover").remove();
   });
 }
@@ -64,11 +64,11 @@ function toggleFullscreen() {
 
 function toggleElement(elementName) {
   let elementInst = get(elementName);
+  elementInst.paused ? elementInst.play() : elementInst.pause();
   if (elementInst.tagName == "VIDEO")
   {
     elementInst.style.display = (elementInst.style.display == "none") ? "" : "none";
   }
-  elementInst.paused ? elementInst.play() : elementInst.pause();
 }
 
 function revealText() {
@@ -116,7 +116,7 @@ function initMain()
       reduceAudioVolume('bgAudio');
       get("arrow").style.display = "";
     }, 7650);
-  }, 900);
+  }, 850);
 }
 
 function developerMode() {
