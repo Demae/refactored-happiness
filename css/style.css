@@ -430,3 +430,42 @@ video {
       -webkit-background-clip: text
   }
 }
+
+.smiley {
+  position: absolute;
+  left: 80%;
+  bottom: -50px;
+  transform: translateX(-50%);
+  font-size: 40px;
+  color: white;
+  z-index: 1;
+}
+
+.smiley.animate {
+  animation: moveLeft 0.9s linear forwards, moveBottom 0.9s forwards;
+}
+
+@keyframes moveLeft {
+  from {
+    left: 80%;
+    transform: rotate(0deg);
+  }
+  to {
+    left: 45%;
+    transform: rotate(225deg);
+  }
+}
+
+@keyframes moveBottom {
+  0% {
+    bottom: -50px;
+    animation-timing-function: cubic-bezier(0.0, 0.0, 0.58, 1.0);
+  }
+  50% {
+    bottom: 200px;
+    animation-timing-function: cubic-bezier(0.42, 0.0, 1.0, 1.0);
+  }
+  100% {
+    bottom: -50px;
+  }
+}

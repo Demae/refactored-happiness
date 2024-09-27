@@ -97,20 +97,26 @@ function reduceAudioVolume(audioName)
 
 function initMain()
 {
-  toggleElement('bgVideo');
-  toggleElement('bgAudio');
-  get("main").innerHTML = ``;
+  const smiley = document.querySelector('.smiley');
+  smiley.classList.add('animate');
+  get("section1-welcome").textContent = "That's a bit gay";
 
   setTimeout(function() {
-    revealText();
-  }, 2507);
+    toggleElement('bgVideo');
+    toggleElement('bgAudio');
+    get("main").innerHTML = ``;
 
-  setTimeout(function() {
-    fullPage.setMouseWheelScrolling(true);
-    fullPage.setAllowScrolling(true);
-    reduceAudioVolume('bgAudio');
-    get("arrow").style.display = "";
-  }, 7650);
+    setTimeout(function() {
+      revealText();
+    }, 2507);
+
+    setTimeout(function() {
+      fullPage.setMouseWheelScrolling(true);
+      fullPage.setAllowScrolling(true);
+      reduceAudioVolume('bgAudio');
+      get("arrow").style.display = "";
+    }, 7650);
+  }, 900);
 }
 
 function developerMode() {
