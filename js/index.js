@@ -101,22 +101,24 @@ function initMain()
   smiley.classList.add('animate');
   get("section1-welcome").textContent = "That's a bit gay";
 
-  setTimeout(function() {
-    toggleElement('bgVideo');
-    toggleElement('bgAudio');
-    get("main").innerHTML = ``;
-
     setTimeout(function() {
-      revealText();
-    }, 2507);
+      toggleElement('bgVideo');
+      toggleElement('bgAudio');
+      setTimeout(function() {
+      get("main").innerHTML = ``;
 
-    setTimeout(function() {
-      fullPage.setMouseWheelScrolling(true);
-      fullPage.setAllowScrolling(true);
-      reduceAudioVolume('bgAudio');
-      get("arrow").style.display = "";
-    }, 7650);
-  }, 850);
+      setTimeout(function() {
+        revealText();
+      }, 2507);
+
+      setTimeout(function() {
+        fullPage.setMouseWheelScrolling(true);
+        fullPage.setAllowScrolling(true);
+        reduceAudioVolume('bgAudio');
+        get("arrow").style.display = "";
+      }, 7650);
+    }, 100);
+  }, 500);
 }
 
 function developerMode() {

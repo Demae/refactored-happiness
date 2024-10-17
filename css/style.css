@@ -437,34 +437,39 @@ video {
   bottom: -50px;
   transform: translateX(-50%);
   font-size: 40px;
-  color: white;
+  font-weight: 700;
+  font-family: comic sans ms, comic sans, cursive;
+  color: #fff;
   z-index: 1;
 }
 
 .smiley.animate {
-  animation: moveLeft 0.9s linear forwards, moveBottom 0.9s forwards;
+  animation:moveLeft .6s linear forwards, moveBottom .6s forwards;
 }
 
 @keyframes moveLeft {
   from {
-    left: 80%;
-    transform: rotate(0deg);
+    left: 70%;
+    transform: rotate(160deg);
   }
+  
   to {
-    left: 45%;
-    transform: rotate(225deg);
+    left: 50%;
+    transform: rotate(360deg);
   }
 }
 
 @keyframes moveBottom {
   0% {
     bottom: -50px;
-    animation-timing-function: cubic-bezier(0.0, 0.0, 0.58, 1.0);
+    animation-timing-function: cubic-bezier(0, 0, .58, 1);
   }
+  
   50% {
     bottom: 200px;
-    animation-timing-function: cubic-bezier(0.42, 0.0, 1.0, 1.0);
+    animation-timing-function: cubic-bezier(.42, 0, 1, 1);
   }
+  
   100% {
     bottom: -50px;
   }
